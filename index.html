@@ -17,7 +17,17 @@
     <script src="script.js" defer></script>
 </head>
 
-<body>
+<body class="loading">
+    <!-- Pantalla de Carga Premium -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="ErickDDP Logo" class="loader-logo">
+                <div class="loader-mark"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="particles-container" id="particles"></div>
 
     <nav class="navbar">
@@ -29,12 +39,14 @@
                     style="display:none; color: var(--primary-400); font-weight: 800; font-size: 1.25rem; font-family: var(--font-sans);">ErickDDP</span>
             </a>
             <div class="nav-links">
-                <a href="#servicios">Servicios</a>
+                <a href="#ecosistema">Proyectos</a>
+                <a href="#educacion">Educación</a>
+                <a href="#certificaciones-overdrive">Certificaciones</a>
+                <a href="#blog">Blog</a>
                 <a href="#sobre-mi">Sobre mí</a>
-                <a href="#digitalizacion">Digitalización</a>
-                <a href="#contacto">Contacto</a>
+
             </div>
-            <a href="#contacto" class="btn btn-primary btn-glow">Agendar consulta gratis</a>
+            <a href="#contacto" class="btn btn-primary btn-glow">Hablemos</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
                 <span></span>
                 <span></span>
@@ -46,81 +58,40 @@
     <!-- Mobile Nav Overlay -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
         <button class="close-btn" id="mobileNavClose" aria-label="Cerrar menú">✕</button>
-        <a href="#servicios">Servicios</a>
+        <a href="#ecosistema">Proyectos</a>
+        <a href="#educacion">Educación</a>
+        <a href="#certificaciones-overdrive">Certificaciones</a>
+        <a href="#blog">Blog</a>
         <a href="#sobre-mi">Sobre mí</a>
-        <a href="#digitalizacion">Digitalización</a>
         <a href="#contacto">Contacto</a>
-        <a href="#contacto" class="btn btn-primary btn-lg">Agendar consulta gratis</a>
+        <a href="#contacto" class="btn btn-primary btn-lg">Hablemos</a>
     </div>
 
-    <header class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <span class="hero-label reveal">⚡ Contador Público + Inteligencia Artificial</span>
-                <h1 class="reveal reveal-delay-1">Tu negocio merece crecer. <br>Yo te ayudo a lograrlo.</h1>
-                <p class="hero-subtitle reveal reveal-delay-2">Asesoría fiscal, contabilidad digital y digitalización
-                    completa de tu negocio. Precios accesibles, atención directa. Sin despachos intermediarios.</p>
-                <div class="hero-actions reveal reveal-delay-3">
-                    <a href="#contacto" class="btn btn-primary btn-lg">Quiero una consulta gratis</a>
-                    <a href="#servicios" class="btn btn-outline">Ver servicios</a>
-                </div>
-            </div>
-            <div class="hero-visual reveal reveal-delay-2">
-                <div class="visual-glow"></div>
-                <img src="images/hero_visual.png" alt="Contabilidad e Inteligencia Artificial" class="floating-image"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                <!-- SVG Fallback Visual -->
-                <div class="hero-visual-fallback" style="display:none;">
-                    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3" />
-                                <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
-                            </radialGradient>
-                            <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#18181B" />
-                                <stop offset="100%" stop-color="#09090B" />
-                            </linearGradient>
-                        </defs>
-                        <!-- Glow background -->
-                        <circle cx="250" cy="250" r="220" fill="url(#glow)" />
-                        <!-- Main card -->
-                        <rect x="80" y="120" width="340" height="220" rx="16" fill="url(#cardGrad)" stroke="#38bdf8"
-                            stroke-width="1" stroke-opacity="0.4" />
-                        <!-- Chart bars -->
-                        <rect x="120" y="240" width="30" height="70" rx="4" fill="#38bdf8" opacity="0.6" />
-                        <rect x="165" y="210" width="30" height="100" rx="4" fill="#38bdf8" opacity="0.8" />
-                        <rect x="210" y="190" width="30" height="120" rx="4" fill="#38bdf8" />
-                        <rect x="255" y="220" width="30" height="90" rx="4" fill="#38bdf8" opacity="0.7" />
-                        <rect x="300" y="200" width="30" height="110" rx="4" fill="#38bdf8" opacity="0.9" />
-                        <rect x="345" y="170" width="30" height="140" rx="4" fill="#38bdf8" />
-                        <!-- Line chart -->
-                        <polyline points="120,230 165,200 210,180 255,210 300,190 345,160" fill="none" stroke="#7dd3fc"
-                            stroke-width="2" stroke-dasharray="5,3" opacity="0.6" />
-                        <!-- Header text lines -->
-                        <rect x="120" y="145" width="120" height="8" rx="4" fill="#38bdf8" opacity="0.8" />
-                        <rect x="120" y="160" width="80" height="6" rx="3" fill="#71717A" opacity="0.6" />
-                        <!-- Floating small card -->
-                        <rect x="300" y="80" width="140" height="80" rx="12" fill="#18181B" stroke="#38bdf8"
-                            stroke-width="1" stroke-opacity="0.5" />
-                        <rect x="318" y="100" width="60" height="6" rx="3" fill="#38bdf8" opacity="0.7" />
-                        <rect x="318" y="115" width="40" height="6" rx="3" fill="#71717A" opacity="0.5" />
-                        <text x="318" y="148" font-family="monospace" font-size="16" fill="#38bdf8"
-                            font-weight="bold">+20%</text>
-                        <!-- Floating bottom card -->
-                        <rect x="60" y="360" width="130" height="70" rx="12" fill="#18181B" stroke="#38bdf8"
-                            stroke-width="1" stroke-opacity="0.4" />
-                        <text x="80" y="390" font-family="monospace" font-size="11" fill="#A1A1AA">SAT · CFDI 4.0</text>
-                        <rect x="80" y="400" width="70" height="5" rx="2" fill="#38bdf8" opacity="0.6" />
-                        <rect x="80" y="412" width="50" height="5" rx="2" fill="#38bdf8" opacity="0.3" />
-                        <!-- Dots -->
-                        <circle cx="440" cy="150" r="4" fill="#38bdf8" opacity="0.5" />
-                        <circle cx="60" cy="200" r="3" fill="#38bdf8" opacity="0.4" />
-                        <circle cx="420" cy="380" r="5" fill="#38bdf8" opacity="0.3" />
-                        <circle cx="150" cy="450" r="3" fill="#38bdf8" opacity="0.4" />
-                    </svg>
-                </div>
-            </div>
+
+
+
+
+    <header id="hero" class="hero-minimal">
+        <!-- Nuevo fondo con foto para la portada -->
+        <div class="hero-bg-photo" id="heroBgPhoto"></div>
+
+        <div class="hero-bg-network" id="network-bg" aria-hidden="true"></div>
+
+        <div class="container hero-minimal-content">
+            <div class="brand-sigla"><span class="highlight">Contador Público</span><br> · <br> <span
+                    class="highlight">Inteligencia Artificial</span></div>
+            <h1 class="brand-name">
+                <span class="first-name">ERICK</span>
+                <span class="last-name">Dominguez<br>Del Prado</span>
+            </h1>
+            <p class="brand-phrase">Construyo el puente entre las <span class="highlight">finanzas</span> y la <span
+                    class="highlight">tecnología</span> que viene</p>
+        </div>
+
+        <div class="scroll-indicator" aria-hidden="true">
+            <div class="chevron"></div>
+            <div class="chevron"></div>
+            <div class="chevron"></div>
         </div>
     </header>
 
@@ -132,13 +103,350 @@
 
 
 
-    <section class="social-proof">
+
+    <!-- NUEVA SECCIÓN: SITIO WEB Y APPS -->
+    <section id="ecosistema" class="eco-section">
+        <div class="eco-heading">
+            <h2 class="section-title reveal">Lo construí<br><span style="color: var(--primary-400);"> para ti</span>
+            </h2>
+        </div>
+        <div class="container eco-container">
+
+            <a href="https://web.erickddp.com" target="_blank" rel="noopener" class="eco-card eco-web">
+                <div class="eco-card-content">
+                    <span class="eco-badge">Servicios Profesionales</span>
+                    <h2>Sitio Web</h2>
+
+                    <!-- Representación visual de un sitio web profesional -->
+                    <div class="web-mockup-container">
+                        <div class="browser-frame">
+                            <div class="browser-header">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                                <div class="search-bar">https://web.erickddp.com</div>
+                            </div>
+                            <div class="browser-body">
+                                <div class="mock-nav"></div>
+                                <div class="mock-hero">
+                                    <div class="mock-line-long"></div>
+                                    <div class="mock-line-short"></div>
+                                </div>
+                                <div class="mock-grid">
+                                    <div class="mock-box"></div>
+                                    <div class="mock-box"></div>
+                                    <div class="mock-box"></div>
+                                </div>
+
+                                <p class="brand-phrase">Da click aqui...</p>
+
+
+                            </div>
+
+                        </div>
+                        <div class="web-floating-element">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://proyectos.erickddp.com/" target="_blank" rel="noopener" class="eco-card eco-apps">
+                <div class="eco-card-content">
+                    <span class="eco-badge">Experimentos y Desarrollo</span>
+                    <h2>Proyectos y Apps</h2>
+
+                    <!-- Representación visual de Aplicaciones y Automatización -->
+                    <div class="app-mockup-container">
+                        <div class="phone-frame">
+                            <div class="phone-header">
+                                <div class="phone-notch"></div>
+                                <div class="phone-status">
+                                    <div class="status-bar"></div>
+                                    <div class="status-bar short"></div>
+                                </div>
+                            </div>
+                            <div class="phone-body">
+                                <div class="app-chat-list">
+                                    <div class="chat-msg bot"></div>
+                                    <div class="chat-msg user"></div>
+                                    <div class="chat-msg bot animated"></div>
+                                </div>
+                                <div class="app-stats-grid">
+                                    <div class="stat-bar" style="--h: 40%"></div>
+                                    <div class="stat-bar" style="--h: 70%"></div>
+                                    <div class="stat-bar" style="--h: 50%"></div>
+                                    <div class="stat-bar" style="--h: 90%"></div>
+                                    <p class="brand-phrase">o <br> aqui <br>
+                                        :D</p>
+
+                                </div>
+                            </div>
+                            <div class="phone-home-line"></div>
+                        </div>
+
+                        <!-- Nodos de conexión flotantes (Automatización) -->
+                        <div class="node-float node-ai">AI</div>
+                        <div class="node-float node-n8n">n8n</div>
+                        <div class="node-float node-data">JSON</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. SECCIÓN EDUCACIÓN -->
+    <section id="educacion" class="edu-section">
+        <div class="edu-heading container">
+            <h2 class="section-title reveal">Formación <span style="color: var(--primary-400);">Profesional</span></h2>
+        </div>
+        <div class="container edu-container reveal">
+            <!-- Card A: Contaduría -->
+            <div class="edu-card">
+                <div class="edu-card-glow"></div>
+                <div class="edu-card-content">
+                    <img src="__LOGO_CONTADURIA__" alt="Logo Contaduría" class="edu-logo"
+                        onerror="this.style.display='none'">
+                    <h3>Lic. en Contaduría Pública</h3>
+                    <div class="edu-inst">CESCIJUC <br> Ced Prof. 13182616</div>
+
+                    <div class="edu-timeline">
+                        <div class="edu-line-container">
+                            <div class="edu-node"></div>
+                            <div class="edu-line"></div>
+                            <div class="edu-node"></div>
+                        </div>
+                        <div class="edu-dates">
+                            <span>2019</span>
+                            <span>2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card B: Inteligencia Artificial -->
+            <div class="edu-card">
+                <div class="edu-card-glow edu-glow-active"></div>
+                <div class="edu-card-content">
+                    <img src="__LOGO_IA__" alt="Logo IA" class="edu-logo" onerror="this.style.display='none'">
+                    <h3>Lic. en Inteligencia Artificial</h3>
+                    <div class="edu-inst">UTEL <br> Matricula: 010818927</div>
+
+                    <div class="edu-timeline">
+                        <div class="edu-line-container">
+                            <div class="edu-node"></div>
+                            <div class="edu-line-dashed-container">
+                                <div class="edu-line-dashed"></div>
+                            </div>
+                            <div class="edu-node edu-node-active">
+                                <div class="node-pulse"></div>
+                            </div>
+                        </div>
+                        <div class="edu-dates">
+                            <span>2026</span>
+                            <span class="edu-active-text">En Proceso</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 4. SECCIÓN CURSOS Y CERTIFICACIONES -->
+    <section id="certificaciones-overdrive" class="cert-overdrive-section">
+        <div class="cert-bg-grid"></div>
+        <div class="cert-laser-scan"></div>
+
+        <div class="container" style="position: relative; z-index: 2; text-align: center; margin-bottom: 3rem;">
+            <h2 class="section-title reveal"><span class="scramble-text" data-text="Cursos y ">Cursos y </span><span
+                    style="color: var(--primary-400);" class="scramble-text"
+                    data-text="Certificaciones">Certificaciones</span></h2>
+            <p class="cert-desc reveal">Aprendizaje continuo enfocado en comprender sistemas y mejorar la forma en que
+                trabajan las organizaciones.</p>
+        </div>
+
+        <div class="marquee-wrapper reveal-3d">
+            <!-- Fila 1: Derecha a Izquierda -->
+            <div class="marquee-container">
+                <div class="marquee-track track-left">
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">5</span> Automatización</div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Innovación Empresarial
+                    </div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">7</span> Finanzas Corporativas
+                    </div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">12</span> Ciberseguridad</div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">9</span> Inteligencia Artificial
+                    </div>
+
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">5</span> Automatización</div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Innovación Empresarial
+                    </div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">7</span> Finanzas Corporativas
+                    </div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">12</span> Ciberseguridad</div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">7</span> Inteligencia Artificial
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila 2: Izquierda a Derecha -->
+            <div class="marquee-container reverse-mask">
+                <div class="marquee-track track-right">
+                    <div class="cert-badge premium-badge">SQL / DATA</div>
+                    <div class="cert-badge premium-badge">Business Intelligence</div>
+                    <div class="cert-badge premium-badge">Python</div>
+                    <div class="cert-badge premium-badge">Automatización</div>
+                    <div class="cert-badge premium-badge">Seguridad Defensiva</div>
+
+                    <div class="cert-badge premium-badge">SQL / DATA</div>
+                    <div class="cert-badge premium-badge">Business Intelligence</div>
+                    <div class="cert-badge premium-badge">Python</div>
+                    <div class="cert-badge premium-badge">Automatización</div>
+                    <div class="cert-badge premium-badge">Seguridad Defensiva</div>
+                </div>
+
+
+                <!-- Fila 1: Derecha a Izquierda -->
+                <div class="marquee-container">
+                    <div class="marquee-track track-left">
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">11</span> Cursos Fiscales</div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Contabilidad
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">6</span> Gestion de Proyectos
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">8</span> Provecidad de datos
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">2</span> Hacking etico
+                        </div>
+
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">11</span> Contabilidad</div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Contabilidad
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">6</span> Gestion de Proyectos
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">8</span> Provecidad de datos
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">2</span> Hacking etico
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="container" style="position: relative; z-index: 2; text-align: center; margin-top: 4rem;">
+            <a href="https://nsl-reconocimientos.blogspot.com/" target="_blank" class="btn-glow-extreme reveal">
+                VER +50 Experiencias
+            </a>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 5. SECCIÓN BLOG -->
+    <section id="blog" class="blog-section">
         <div class="container">
-            <div class="badges-row">
-                <div class="badge glass-pill">🎓 Cédula Profesional · 13758780</div>
-                <div class="badge glass-pill">🤖 Lic. Inteligencia Artificial</div>
-                <div class="badge glass-pill">📍 Ciudad de México</div>
-                <div class="badge glass-pill">⭐ +5 años de experiencia</div>
+            <h2 class="section-title reveal">Revisa mi <br> <span style="color: var(--primary-400);">Blog</span></h2>
+            <div id="blog-grid" class="blog-grid reveal">
+                <div class="blog-loader">
+                    <span class="spinner"></span> Cargando artículos...
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 6. SECCIÓN SOBRE MÍ PREMIUM (PERFIL PROFESIONAL) -->
+    <section id="sobre-mi" class="profile-premium" style="position: relative;">
+        <!-- Nuevo fondo difuminado agresivo -->
+        <div class="profile-bg-blur" id="profileBgBlur"></div>
+
+        <div class="container profile-premium-container" style="position: relative; z-index: 2;">
+            <!-- 60% Left Content -->
+            <div class="profile-premium-content reveal">
+                <h2 class="profile-dynamic-title section-title">
+                    <span class="primary-accent">E</span><span class="collapsible-part">rick</span><span
+                        class="collapsible-part">&nbsp;</span><span class="primary-accent">DDP</span>
+                </h2>
+                <h3 class="profile-subtitle">Estructura, datos y decisiones</h3>
+                <p class="profile-narrative typewriter-js" data-text="Mi formación contable me llevó a comprender cómo fluye la información 
+                    dentro de una empresa. 
+                    Hoy diseño sistemas que organizan datos y simplifican procesos para que las 
+                    decisiones puedan tomarse con mayor claridad. ">
+                </p>
+
+                <!-- Panel de Métricas Clave -->
+                <div class="profile-metrics">
+                    <div class="metric-item">
+                        <span class="metric-value">+5</span>
+                        <span class="metric-label">Años de experiencia</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">+20</span>
+                        <span class="metric-label">Empresas administradas</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-value">13758780</span>
+                        <span class="metric-label">Cédula Profesional</span>
+                    </div>
+                </div>
+
+                <a href="manifiesto.html" class="profile-link-arrow">VER MI MANIFIESTO COMPLETO &rarr;</a>
+            </div>
+
+            <!-- 40% Right Image Content -->
+            <div class="profile-premium-visual reveal" style="transition-delay: 0.2s;">
+                <div class="profile-avatar-container">
+                    <div class="profile-avatar-glow"></div>
+                    <img src="images/perfil.png" alt="Erick Dominguez" class="profile-avatar-img"
+                        onerror="this.style.display='none'">
+                </div>
+
             </div>
         </div>
     </section>
@@ -161,403 +469,65 @@
 
 
 
-    <section id="servicios" class="services">
-        <div class="container">
-            <h2 class="section-title reveal">Soluciones <span style="color: var(--primary-400);">Reales</span></h2>
-            <div class="services-grid">
-                <!-- Card 1 -->
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="images/1.png" alt="Declaración Anual">
-                            <div class="card-overlay">
-                                <h3>Declaración Anual / SAT</h3>
-                            </div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Declaración Anual / SAT</h3>
-                            <p>Cumple con el SAT sin estrés. Calculo y presento tu declaración anual con todo en orden.
-                            </p>
-                            <div class="tags">
-                                <span class="tag">SAT</span>
-                                <span class="tag">ISR</span>
-                                <span class="tag">CFDI 4.0</span>
-                            </div>
-                            <button class="btn btn-sm btn-outline">Más info</button>
-                        </div>
+
+
+
+
+
+
+    <!-- SECCIÓN CONTACTO: HABLAR CONMIGO (NODO) -->
+    <section id="contacto" class="hablar-conmigo-node">
+        <div class="node-mesh-bg"></div>
+        <div class="container node-container">
+            <h2 class="node-title reveal">Hablar conmigo</h2>
+            <p class="node-desc reveal">Intersección de sistemas, finanzas y libertad. Disponible en estos nodos.</p>
+
+            <div class="node-identity-grid">
+                <div class="orbital-ring"></div>
+
+                <a href="https://wa.me/525534806184" target="_blank" class="node-link reveal"
+                    style="transition-delay: 0.1s;">
+                    <div class="node-glass">
+                        <svg class="node-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.878-.788-1.47-1.761-1.643-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                        </svg>
                     </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="images/2.png" alt="Contabilidad Mensual">
-                            <div class="card-overlay">
-                                <h3>Contabilidad Mensual</h3>
-                            </div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Contabilidad Mensual</h3>
-                            <p>Lleva tu negocio con orden real. Estados financieros, conciliaciones y reportes claros
-                                cada mes.</p>
-                            <div class="tags">
-                                <span class="tag">Balance</span>
-                                <span class="tag">Reportes</span>
-                                <span class="tag">Dashboards</span>
-                            </div>
-                            <button class="btn btn-sm btn-outline">Más info</button>
-                        </div>
+                    <span class="node-text">WhatsApp</span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/erick-dominguez-4296411a9/" target="_blank"
+                    class="node-link reveal" style="transition-delay: 0.2s;">
+                    <div class="node-glass">
+                        <svg class="node-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
                     </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="images/3.png" alt="Página Web Profesional">
-                            <div class="card-overlay">
-                                <h3>Página Web Profesional</h3>
-                            </div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Página Web Profesional</h3>
-                            <p>Tu negocio necesita presencia digital. Diseño y desarrollo tu sitio web desde cero.</p>
-                            <div class="tags">
-                                <span class="tag">Diseño</span>
-                                <span class="tag">Dominio</span>
-                                <span class="tag">SEO básico</span>
-                            </div>
-                            <button class="btn btn-sm btn-outline">Más info</button>
-                        </div>
+                    <span class="node-text">LinkedIn</span>
+                </a>
+
+                <a href="https://github.com/Erickddp" target="_blank" class="node-link reveal"
+                    style="transition-delay: 0.3s;">
+                    <div class="node-glass">
+                        <svg class="node-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
                     </div>
-                </div>
-                <!-- Card 4 -->
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="images/4.png" alt="Integración Plataformas">
-                            <div class="card-overlay">
-                                <h3>Plataformas Digitales</h3>
-                            </div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Plataformas Digitales</h3>
-                            <p>Integra tu negocio a Uber Eats, DiDi Food, Rappi y más. Más canales, más ventas.</p>
-                            <div class="tags">
-                                <span class="tag">Uber Eats</span>
-                                <span class="tag">DiDi</span>
-                                <span class="tag">Rappi</span>
-                            </div>
-                            <button class="btn btn-sm btn-outline">Más info</button>
-                        </div>
+                    <span class="node-text">GitHub</span>
+                </a>
+
+                <a href="https://www.facebook.com/profile.php?id=61584844233250" target="_blank"
+                    class="node-link reveal" style="transition-delay: 0.4s;">
+                    <div class="node-glass">
+                        <svg class="node-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
                     </div>
-                </div>
-                <!-- Card 5 -->
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="images/5.png" alt="Automatización IA">
-                            <div class="card-overlay">
-                                <h3>Automatización con IA</h3>
-                            </div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Automatización con IA</h3>
-                            <p>Flujos inteligentes con n8n, captura de leads automática, notificaciones y más.</p>
-                            <div class="tags">
-                                <span class="tag">n8n</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">IA</span>
-                            </div>
-                            <button class="btn btn-sm btn-outline">Más info</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 6 -->
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="images/6.png" alt="Asesoría Fiscal">
-                            <div class="card-overlay">
-                                <h3>Asesoría Fiscal</h3>
-                            </div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Asesoría Fiscal</h3>
-                            <p>¿Tienes dudas con el SAT, DIOT o CFDI? Te oriento paso a paso con soluciones reales.</p>
-                            <div class="tags">
-                                <span class="tag">DIOT</span>
-                                <span class="tag">Buzon SAT</span>
-                                <span class="tag">PM</span>
-                            </div>
-                            <button class="btn btn-sm btn-outline">Más info</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <section class="dashboard-metrics" id="metricas">
-        <div class="container">
-            <div class="metrics-grid">
-                <div class="metric-item reveal">
-                    <span class="metric-number" data-target="20">0</span>
-                    <span class="metric-label">Razones sociales administradas</span>
-                </div>
-                <div class="metric-item reveal reveal-delay-1">
-                    <span class="metric-number" data-target="5">0</span>
-                    <span class="metric-label">Años de experiencia contable</span>
-                </div>
-                <div class="metric-item reveal reveal-delay-2">
-                    <span class="metric-number" data-target="100" data-suffix="%">0%</span>
-                    <span class="metric-label">Digital y automatizado</span>
-                </div>
-                <div class="metric-item reveal reveal-delay-3">
-                    <span class="metric-number" data-target="2">0</span>
-                    <span class="metric-label">Licenciaturas: Contaduría + IA</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- SECCIÓN DIGITALIZACIÓN -->
-    <section id="digitalizacion" class="">
-        <div class="container">
-            <div class="digitalizacion-grid">
-                <div class="digitalizacion-text reveal">
-                    <span class="hero-label">🚀 Digitalización de Negocios</span>
-                    <h2>Lleva tu negocio al mundo digital</h2>
-                    <p>Integro tu negocio a las plataformas más importantes del mercado y automatizo tus procesos para
-                        que puedas enfocarte en lo que realmente importa: crecer.</p>
-                    <div class="digitalizacion-steps">
-                        <div class="step-item">
-                            <div class="step-icon">📋</div>
-                            <div class="step-content">
-                                <h4>Diagnóstico inicial gratuito</h4>
-                                <p>Analizamos tu negocio y definimos la mejor estrategia digital.</p>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-icon">⚙️</div>
-                            <div class="step-content">
-                                <h4>Configuración y alta en plataformas</h4>
-                                <p>Te damos de alta en Uber Eats, DiDi Food, Rappi y más.</p>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-icon">🤖</div>
-                            <div class="step-content">
-                                <h4>Automatización con IA</h4>
-                                <p>Flujos automáticos con n8n para captura de leads y notificaciones.</p>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-icon">📈</div>
-                            <div class="step-content">
-                                <h4>Seguimiento y optimización</h4>
-                                <p>Monitoreo continuo y ajustes para maximizar tus resultados.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#contacto" class="btn btn-primary" style="margin-top: 2rem; display: inline-flex;">Quiero
-                        digitalizar mi negocio</a>
-                </div>
-                <div class="digitalizacion-visual reveal reveal-delay-2">
-                    <div class="platform-card">
-                        <div class="platform-icon">🛵</div>
-                        <div class="platform-name">Uber Eats</div>
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-icon">🚗</div>
-                        <div class="platform-name">DiDi Food</div>
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-icon">🐰</div>
-                        <div class="platform-name">Rappi</div>
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-icon">🌐</div>
-                        <div class="platform-name">Tu Página Web</div>
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-icon">🤖</div>
-                        <div class="platform-name">n8n + IA</div>
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-icon">📊</div>
-                        <div class="platform-name">Power BI</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <section id="sobre-mi" class="about-section">
-        <div class="container about-content">
-            <div class="about-image">
-                <img src="images/prof.png" alt="Erick Domínguez Del Prado"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                <div class="fallback-avatar">ED</div>
-            </div>
-            <div class="about-text">
-                <h2>Erick Domínguez Del Prado</h2>
-                <div class="about-bio">
-                    <p>Soy Contador Público titulado con cédula profesional y más de 5 años de experiencia manejando
-                        contabilidad corporativa, cumplimiento fiscal ante el SAT y administración de múltiples razones
-                        sociales.</p>
-                    <p>Actualmente curso una Licenciatura en Inteligencia Artificial, lo que me permite combinar lo
-                        mejor de dos mundos: el rigor contable y el poder de la tecnología. El resultado son soluciones
-                        reales, accesibles y automatizadas para negocios como el tuyo.</p>
-                </div>
-                <div class="skills-row">
-                    <span class="skill-tag">SAT</span>
-                    <span class="skill-tag">CFDI 4.0</span>
-                    <span class="skill-tag">DIOT</span>
-                    <span class="skill-tag">Power BI</span>
-                    <span class="skill-tag">n8n</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Automatización</span>
-                    <span class="skill-tag">Páginas Web</span>
-                </div>
-                <a href="https://erickddp.com" target="_blank" class="link-arrow">Ver mi portafolio completo →</a>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-    <section class="cta-final">
-        <div class="container">
-            <h2>¿Empezamos?</h2>
-            <p>Primera consulta completamente gratis. Sin compromiso.</p>
-            <a href="#contacto" class="btn btn-primary btn-lg">Agendar ahora</a>
-            <p class="whatsapp-direct">O escríbeme directo: <a href="https://wa.me/525534806184" target="_blank">
-                    55-3480-6184</a></p>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- SECCIÓN CONTACTO -->
-    <section id="contacto" class="lead-capture">
-        <div class="container">
-            <div class="form-card glass-card">
-                <div class="form-header">
-                    <h2>¿Listo para ordenar tu negocio?</h2>
-                    <p>Cuéntame qué necesitas y te respondo en menos de 24 horas. Primera consulta gratis.</p>
-                </div>
-                <form id="form-servicios-erickddp" class="lead-form">
-                    <div class="form-group">
-                        <label for="nombre">Nombre completo</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="negocio">Nombre de tu negocio o actividad</label>
-                        <input type="text" id="negocio" name="negocio"
-                            placeholder="Empresa S.A. de C.V. / Freelancer">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="whatsapp">WhatsApp</label>
-                            <input type="tel" id="whatsapp" name="whatsapp" placeholder="55 1234 5678">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Correo electrónico</label>
-                            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="servicio">Servicio de interés</label>
-                        <select id="servicio" name="servicio" required>
-                            <option value="">Selecciona una opción...</option>
-                            <option value="Declaración Anual / SAT">Declaración Anual / SAT</option>
-                            <option value="Contabilidad Mensual">Contabilidad Mensual</option>
-                            <option value="Página Web Profesional">Página Web Profesional</option>
-                            <option value="Integración a Plataformas">Integración a Plataformas (Uber, DiDi, Rappi)
-                            </option>
-                            <option value="Automatización con IA / n8n">Automatización con IA / n8n</option>
-                            <option value="Asesoría Fiscal General">Asesoría Fiscal General</option>
-                            <option value="No sé, necesito orientación">No sé, necesito orientación</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="mensaje">Mensaje / ¿Cuéntame más sobre tu negocio?</label>
-                        <textarea id="mensaje" name="mensaje" rows="3"
-                            placeholder="Detalles adicionales (opcional)"></textarea>
-                    </div>
-
-                    <div class="form-group checkbox-group" style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px;">
-                        <input type="checkbox" id="acepto_privacidad" name="Acepto_Privacidad" required style="margin-top: 5px; cursor: pointer; width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--primary-400);">
-                        <label for="acepto_privacidad" style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; display: inline; cursor: pointer;">
-                            Acepto el <a href="aviso-privacidad.html" target="_blank" style="color: var(--primary-400); text-decoration: underline;">Aviso de Privacidad</a>, los <a href="legal.html#terminos" target="_blank" style="color: var(--primary-400); text-decoration: underline;">Términos de Servicio</a> y el <a href="legal.html#etica" target="_blank" style="color: var(--primary-400); text-decoration: underline;">Protocolo de Ética en IA</a>.
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-block btn-pulse">Enviar y recibir consulta
-                        gratis</button>
-
-                    <div id="formStatus" class="form-status"></div>
-                </form>
+                    <span class="node-text">EDDP Servicios</span>
+                </a>
             </div>
         </div>
     </section>
@@ -582,15 +552,15 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <img src="images/logo.png" alt="ErickDDP Logo" height="30">
-                    <p class="copyright">© 2025 ErickDDP Servicios. Todos los derechos reservados. · Ciudad de México
+                    <p class="copyright">© 2025 ErickDDP. Todos los derechos reservados. · Ciudad de México
                     </p>
                 </div>
                 <div class="footer-links">
                     <div class="col">
-                        <h4>Servicios</h4>
-                        <a href="#servicios">Declaraciones</a>
-                        <a href="#servicios">Contabilidad</a>
-                        <a href="#servicios">Desarrollo Web</a>
+                        <h4>Explorar</h4>
+                        <a href="#ecosistema">Proyectos</a>
+                        <a href="#educacion">Educación</a>
+                        <a href="#certificaciones-overdrive">Certificaciones</a>
                     </div>
                     <div class="col">
                         <h4>Legal</h4>
@@ -602,7 +572,7 @@
                         <h4>Contacto</h4>
                         <a href="https://wa.me/525534806184">WhatsApp</a>
                         <a href="mailto:cperickd@gmail.com">Email</a>
-                        <a href="https://erickddp.com">Web Personal</a>
+                        <a href="https://mx.linkedin.com/in/erickddp">LinkedIn</a>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ─── PRELOADER CONTROL ──────────────────────────────────────────────────
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        // Duración de exactamente 4 segundos (4000ms)
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+            document.body.classList.remove('loading');
+
+            // Eliminar del DOM después de la transición de fade para optimizar
+            setTimeout(() => {
+                preloader.remove();
+            }, 800);
+        }, 1500);
+    }
+
 
     // ─── NAVBAR SCROLL EFFECT ───────────────────────────────────────────────
     const navbar = document.querySelector('.navbar');
@@ -92,6 +107,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ─── ANIMATED COUNTERS ──────────────────────────────────────────────────
     const counters = document.querySelectorAll('.metric-number[data-target]');
+
+    // ─── EDUCATION TIMELINE ANIMATION ────────────────────────────────────
+    const eduCards = document.querySelectorAll('.edu-card');
+    const eduObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const line = entry.target.querySelector('.edu-line');
+                if (line) {
+                    // Pequeño delay para que se vea el inicio tras el reveal de la card
+                    setTimeout(() => {
+                        line.classList.add('completed');
+                    }, 400);
+                }
+                eduObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    eduCards.forEach(card => eduObserver.observe(card));
 
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -205,4 +239,360 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const container = document.getElementById('network-bg');
+    if (!container) return;
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d', { alpha: true });
+    container.appendChild(canvas);
+
+    let w = 0, h = 0;
+    let particles = [];
+    const connDist = 140;
+
+    function resize() {
+        w = canvas.width = container.clientWidth;
+        h = canvas.height = container.clientHeight;
+    }
+    window.addEventListener('resize', resize, { passive: true });
+    resize();
+
+    class P {
+        constructor() {
+            this.x = Math.random() * w;
+            this.y = Math.random() * h;
+            this.vx = (Math.random() - 0.5) * 0.25;
+            this.vy = (Math.random() - 0.5) * 0.25;
+        }
+        u() {
+            this.x += this.vx; this.y += this.vy;
+            if (this.x <= 0 || this.x >= w) this.vx *= -1;
+            if (this.y <= 0 || this.y >= h) this.vy *= -1;
+        }
+        d() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, 1.2, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(56,189,248,0.35)';
+            ctx.fill();
+        }
+    }
+
+    function init() {
+        particles = [];
+        const count = window.innerWidth < 768 ? 22 : 44;
+        for (let i = 0; i < count; i++) particles.push(new P());
+    }
+    init();
+
+    function loop() {
+        ctx.clearRect(0, 0, w, h);
+
+        for (let i = 0; i < particles.length; i++) {
+            const a = particles[i];
+            a.u(); a.d();
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const b = particles[j];
+                const dx = a.x - b.x, dy = a.y - b.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < connDist) {
+                    const o = 1 - (dist / connDist);
+                    ctx.beginPath();
+                    ctx.moveTo(a.x, a.y);
+                    ctx.lineTo(b.x, b.y);
+                    ctx.strokeStyle = `rgba(56,189,248, ${(o * 0.14).toFixed(2)})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    // --- REVEAL & PARALLAX SECCIÓN ECOSISTEMA ---
+    const ecoContainer = document.querySelector('.eco-container');
+    const ecoSection = document.querySelector('.eco-section');
+    if (ecoContainer) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    ecoContainer.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        observer.observe(ecoContainer);
+    }
+
+    if (ecoSection) {
+        ecoSection.addEventListener('mousemove', (e) => {
+            if (window.innerWidth > 991) {
+                const x = (e.clientX / window.innerWidth - 0.5) * 30;
+                const y = (e.clientY / window.innerHeight - 0.5) * 30;
+                ecoSection.style.setProperty('--mx', `${x}px`);
+                ecoSection.style.setProperty('--my', `${y}px`);
+            }
+        });
+    }
+
+    // ─── BLOG FEED FETCH (JSONP) ────────────────────────────────────────────
+    const blogGrid = document.getElementById('blog-grid');
+    if (blogGrid) {
+        window.blogFeedCallback = function (data) {
+            const posts = data.feed.entry || [];
+            blogGrid.innerHTML = '';
+
+            if (posts.length === 0) {
+                blogGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">No hay artículos disponibles en este momento.</p>';
+                return;
+            }
+
+            posts.forEach((post, index) => {
+                const title = post.title.$t;
+                let link = '#';
+                if (post.link) {
+                    for (let i = 0; i < post.link.length; i++) {
+                        if (post.link[i].rel === 'alternate') {
+                            link = post.link[i].href;
+                            break;
+                        }
+                    }
+                }
+
+                const puDate = new Date(post.published.$t);
+                const formattedDate = puDate.toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                let contentHtml = post.content ? post.content.$t : (post.summary ? post.summary.$t : '');
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = contentHtml;
+                const textContent = tempDiv.textContent || tempDiv.innerText || '';
+                const excerpt = textContent.replace(/\s+/g, ' ').trim().substring(0, 120) + '...';
+
+                let thumbUrl = '';
+                if (post.media$thumbnail) {
+                    thumbUrl = post.media$thumbnail.url.replace(/\/s[0-9]+(\-c)?\//, '/s600/');
+                } else {
+                    const imgMatch = contentHtml.match(/<img[^>]+src="([^">]+)"/);
+                    if (imgMatch && imgMatch[1]) {
+                        thumbUrl = imgMatch[1];
+                    }
+                }
+
+                const fallbackSvg = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>';
+                const thumbHTML = thumbUrl
+                    ? `<img src="${thumbUrl}" alt="${title}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                       <div class="blog-thumb-fallback" style="display:none;">${fallbackSvg}</div>`
+                    : `<div class="blog-thumb-fallback">${fallbackSvg}</div>`;
+
+                const delay = index * 0.15;
+                const cardHTML = `
+                    <a href="${link}" target="_blank" rel="noopener" class="blog-card reveal" style="animation-delay: ${delay}s">
+                        <div class="blog-thumb">
+                            ${thumbHTML}
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">${formattedDate}</div>
+                            <h3 class="blog-title">${title}</h3>
+                            <p class="blog-excerpt">${excerpt}</p>
+                            <div class="blog-read-more">Leer artículo <span>→</span></div>
+                        </div>
+                    </a>
+                `;
+                blogGrid.insertAdjacentHTML('beforeend', cardHTML);
+            });
+
+            // Trigger reveal for new cards
+            setTimeout(() => {
+                document.querySelectorAll('#blog-grid .reveal').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 50);
+        };
+
+        const script = document.createElement('script');
+        script.src = 'https://blog.erickddp.com/feeds/posts/default?alt=json-in-script&max-results=3&callback=blogFeedCallback';
+        script.onerror = function () {
+            blogGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">No se pudieron cargar los artículos. <br><a href="https://blog.erickddp.com" target="_blank" style="color: var(--primary-400);">Visita el blog directamente →</a></p>';
+        };
+        document.body.appendChild(script);
+    }
+
+    // --- ANIMACIONES PORTADA 2: HERO FOTO Y ECO EN PERFIL ---
+
+    // 1. ANIMACIÓN: Hero Background Photo (Portada2.png Transparente)
+    const heroBgPhoto = document.getElementById('heroBgPhoto');
+    if (heroBgPhoto) {
+        // Un leve retraso de 100ms para asegurar renderizado de browser e inferir el efecto popup-out
+        setTimeout(() => {
+            heroBgPhoto.style.opacity = '0.7';
+            heroBgPhoto.style.transform = 'scale(1.0)';
+        }, 100);
+    }
+
+    // 2. ANIMACIÓN: Profile Background Blur (Sobre-MI Blur Eco)
+    const profileBgBlur = document.getElementById('profileBgBlur');
+    const sobreMiSection = document.getElementById('sobre-mi');
+
+    if (profileBgBlur && sobreMiSection) {
+        const observerProfileBlur = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Cargar opacidad y frenar el observer
+                    profileBgBlur.style.opacity = '0.3';
+                    observerProfileBlur.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        observerProfileBlur.observe(sobreMiSection);
+    }
+
+});
+
+// --- HIGH END ANIMATIONS PARA CERTIFICACIONES ---
+document.addEventListener('DOMContentLoaded', () => {
+    // 3D Reveal Logic
+    const reveal3d = document.querySelectorAll('.reveal-3d');
+    if ('IntersectionObserver' in window) {
+        const observer3d = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveal3d.forEach(el => observer3d.observe(el));
+    } else {
+        reveal3d.forEach(el => el.classList.add('active'));
+    }
+
+    // Magnetic Hover
+    const magneticItems = document.querySelectorAll('.cert-magnetic');
+    magneticItems.forEach(item => {
+        item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            item.style.transform = `translate3d(${x * 0.1}px, ${y * 0.1}px, 0) scale(1.02)`;
+            item.style.zIndex = "10";
+            item.style.transition = "transform 0.1s ease-out";
+        });
+
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = '';
+            item.style.zIndex = "1";
+            item.style.transition = "transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)";
+        });
+    });
+
+    // Parallax Mesh & Particles
+    const certSection = document.getElementById('certificaciones');
+    const certMesh = document.getElementById('certMeshBg');
+    const certParticles = document.getElementById('certParticles');
+
+    if (certSection) {
+        window.addEventListener('scroll', () => {
+            const rect = certSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                const scrollFactor = window.scrollY * 0.05;
+                if (certMesh) certMesh.style.transform = `translate3d(0, ${scrollFactor}px, 0)`;
+            }
+        });
+
+        certSection.addEventListener('mousemove', (e) => {
+            if (window.innerWidth <= 768) return;
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            if (certParticles) certParticles.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        });
+    }
+
+    // ─── PROFILE DYNAMIC EFFECTS (TITLE & TYPEWRITER) ───────────────────────
+    const profileContent = document.querySelector('.profile-premium-content');
+    const typewriterElem = document.querySelector('.typewriter-js');
+    const dynamicTitle = document.querySelector('.profile-dynamic-title');
+
+    function runTypewriter(el) {
+        const fullText = el.getAttribute('data-text');
+        let currentText = "";
+        let index = 0;
+
+        function type() {
+            if (index < fullText.length) {
+                currentText += fullText[index];
+                el.textContent = currentText;
+                index++;
+                setTimeout(type, 25); // Velocidad de escritura
+            }
+        }
+        type();
+    }
+
+    if (profileContent && 'IntersectionObserver' in window) {
+        const profileObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 1. Iniciar Efecto Escritura inmediatamente
+                    if (typewriterElem) runTypewriter(typewriterElem);
+
+                    // 2. Colapsar Título después de 2 segundos
+                    setTimeout(() => {
+                        if (dynamicTitle) dynamicTitle.classList.add('collapsed');
+                    }, 2000);
+
+                    profileObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        profileObserver.observe(profileContent);
+    }
+});
+
+// --- SCRAMBLE EFFECT FOR TITLES ---
+document.addEventListener('DOMContentLoaded', () => {
+    const chars = '!<>-_\\/[]{}—=+*^?#_';
+    const scrambleElements = document.querySelectorAll('.scramble-text');
+
+    const scrambleText = (el) => {
+        const originalText = el.getAttribute('data-text');
+        if (!originalText) return;
+
+        let iteration = 0;
+        clearInterval(el.dataset.scrambleInterval);
+
+        el.dataset.scrambleInterval = setInterval(() => {
+            el.innerText = originalText.split('').map((letter, index) => {
+                if (index < iteration) {
+                    return originalText[index];
+                }
+                return chars[Math.floor(Math.random() * chars.length)];
+            }).join('');
+
+            if (iteration >= originalText.length) {
+                clearInterval(el.dataset.scrambleInterval);
+                el.innerText = originalText;
+            }
+
+            iteration += 1 / 3;
+        }, 30);
+    };
+
+    if ('IntersectionObserver' in window) {
+        const scrambleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start scramble effect
+                    entry.target.querySelectorAll('.scramble-text').forEach(scrambleText);
+                    scrambleObserver.unobserve(entry.target); // decode only once on sight
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const certSection = document.getElementById('certificaciones-overdrive');
+        if (certSection) scrambleObserver.observe(certSection);
+    }
 });
