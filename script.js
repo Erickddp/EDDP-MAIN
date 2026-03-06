@@ -541,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 2. Colapsar Título después de 2 segundos
                     setTimeout(() => {
                         if (dynamicTitle) dynamicTitle.classList.add('collapsed');
-                    }, 2000);
+                    }, 5000);
 
                     profileObserver.unobserve(entry.target);
                 }
