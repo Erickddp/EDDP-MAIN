@@ -448,6 +448,16 @@ document.addEventListener('DOMContentLoaded', () => {
         observerProfileBlur.observe(sobreMiSection);
     }
 
+    // ─── FOOTER LOGO ANIMATION ──────────────────────────────────────────────
+    const footerLogo = document.getElementById('footerLogo');
+    if (footerLogo) {
+        footerLogo.addEventListener('click', () => {
+            footerLogo.classList.remove('animate-spin');
+            void footerLogo.offsetWidth; // trigger reflow
+            footerLogo.classList.add('animate-spin');
+        });
+    }
+
 });
 
 // --- HIGH END ANIMATIONS PARA CERTIFICACIONES ---
