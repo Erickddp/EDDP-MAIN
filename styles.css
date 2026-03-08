@@ -1352,7 +1352,7 @@ select option {
     padding: 8rem 0;
     min-height: 100vh;
     display: block;
-    background-color: var(--bg-primary);
+    background-color: transparent;
     background-image: radial-gradient(circle at center, rgba(56, 189, 248, 0.02) 1px, transparent 1px);
     background-size: 24px 24px;
     position: relative;
@@ -2039,7 +2039,7 @@ select option {
     min-height: 100vh;
     min-height: 100svh;
     display: block;
-    background-color: var(--bg-primary);
+    background-color: transparent;
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -2759,7 +2759,7 @@ select option {
     position: relative;
     padding: 8rem 0;
     overflow: hidden;
-    background-color: var(--bg-primary);
+    background-color: transparent;
 }
 
 /* Digital Grid */
