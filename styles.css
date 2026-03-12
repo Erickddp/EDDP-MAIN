@@ -2492,9 +2492,6 @@ select option {
     will-change: transform;
 }
 
-.marquee-track:hover {
-    animation-play-state: paused;
-}
 
 @keyframes marqueeScroll {
     0% {
@@ -2894,9 +2891,6 @@ select option {
 }
 
 /* Pause on hover on both tracks */
-.marquee-wrapper:hover .marquee-track {
-    animation-play-state: paused;
-}
 
 @keyframes marqueeLeft {
     0% {
