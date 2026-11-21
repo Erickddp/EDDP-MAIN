@@ -3951,3 +3951,499 @@ body.loading {
         width: 100px;
     }
 }
+
+/* ==========================================================================
+   V2 · MODERNIZACIÓN (bento, navbar flotante, aurora, tipografía)
+   ========================================================================== */
+:root {
+    --violet-400: #a78bfa;
+    --grad-brand: linear-gradient(120deg, #7dd3fc 0%, #38bdf8 40%, #a78bfa 100%);
+}
+
+.grad-text {
+    background: var(--grad-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.section-kicker {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--primary-400);
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    letter-spacing: -0.03em;
+}
+
+/* Navbar flotante tipo píldora */
+.navbar {
+    top: 0.75rem;
+    padding: 0;
+}
+
+.navbar .navbar-content {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0.55rem 0.75rem 0.55rem 1.25rem;
+    border-radius: 9999px;
+    background: rgba(9, 9, 11, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    transition: var(--transition);
+}
+
+.navbar.scrolled {
+    background: transparent;
+    border-bottom: none;
+    padding: 0;
+    backdrop-filter: none;
+}
+
+.navbar.scrolled .navbar-content {
+    background: rgba(9, 9, 11, 0.8);
+    border-color: rgba(56, 189, 248, 0.2);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        top: 0.5rem;
+    }
+
+    .navbar .navbar-content {
+        margin: 0 0.75rem;
+    }
+}
+
+/* Hero: aurora + CTAs */
+.hero-minimal::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(40% 35% at 20% 25%, rgba(56, 189, 248, 0.16), transparent 70%),
+        radial-gradient(35% 30% at 80% 70%, rgba(167, 139, 250, 0.14), transparent 70%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+    animation: auroraShift 14s ease-in-out infinite alternate;
+}
+
+@keyframes auroraShift {
+    from {
+        transform: translate3d(-2%, -1%, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(3%, 2%, 0) scale(1.08);
+    }
+}
+
+.hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    justify-content: center;
+    margin-top: 2.25rem;
+    position: relative;
+    z-index: 3;
+}
+
+/* Bento */
+.bento {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.25rem;
+}
+
+.bento-card {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    border-radius: 1.75rem;
+    padding: 2.25rem;
+    background: linear-gradient(160deg, rgba(24, 24, 27, 0.75), rgba(9, 9, 11, 0.75));
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(14px);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s, box-shadow 0.5s;
+    color: inherit;
+}
+
+.bento-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(56, 189, 248, 0.45);
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(56, 189, 248, 0.12);
+}
+
+.bento-glow {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    top: -120px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.22), transparent 65%);
+    filter: blur(30px);
+    pointer-events: none;
+    transition: opacity 0.5s;
+    opacity: 0.7;
+}
+
+.bento-intel .bento-glow {
+    background: radial-gradient(circle, rgba(167, 139, 250, 0.25), transparent 65%);
+}
+
+.bento-card:hover .bento-glow {
+    opacity: 1;
+}
+
+.bento-timbra {
+    grid-column: span 4;
+    gap: 1.5rem;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.bento-intel {
+    grid-column: span 2;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.bento-apps {
+    grid-column: span 6;
+}
+
+.bento-body {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    flex: 1;
+}
+
+.bento-card h3 {
+    font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.bento-card p {
+    color: var(--text-tertiary);
+    font-size: 1rem;
+    max-width: 46ch;
+}
+
+.bento-badge {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--primary-300);
+    padding: 0.35rem 0.8rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    background: rgba(56, 189, 248, 0.07);
+}
+
+.live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+    animation: livePulse 2s infinite;
+}
+
+@keyframes livePulse {
+    70% {
+        box-shadow: 0 0 0 8px rgba(74, 222, 128, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+    }
+}
+
+.bento-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.bento-tags li {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bento-cta {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-weight: 700;
+    color: var(--primary-400);
+}
+
+.bento-cta span {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.bento-card:hover .bento-cta span {
+    transform: translateX(6px);
+}
+
+.bento-visual {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Maqueta de factura */
+.invoice-mock {
+    position: relative;
+    width: 230px;
+    padding: 1.1rem;
+    border-radius: 1rem;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.7);
+    transform: rotate(3deg);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bento-timbra:hover .invoice-mock {
+    transform: rotate(0deg) scale(1.04);
+}
+
+.invoice-head {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0.9rem;
+}
+
+.invoice-head b {
+    color: var(--primary-300);
+}
+
+.invoice-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.55rem;
+}
+
+.invoice-row i {
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    flex: 2;
+}
+
+.invoice-row i+i {
+    flex: 1;
+    background: rgba(56, 189, 248, 0.25);
+}
+
+.invoice-row.short i:first-child {
+    flex: 1.2;
+}
+
+.invoice-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.9rem;
+    padding-top: 0.7rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+    font-size: 0.8rem;
+}
+
+.invoice-total b {
+    font-family: var(--font-mono);
+    color: #fff;
+}
+
+.invoice-stamp {
+    position: absolute;
+    right: -14px;
+    bottom: -14px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #052e16;
+    background: #4ade80;
+    box-shadow: 0 0 25px rgba(74, 222, 128, 0.45);
+    transform: rotate(-8deg);
+    animation: stampIn 4s ease-in-out infinite;
+}
+
+@keyframes stampIn {
+
+    0%,
+    100% {
+        transform: rotate(-8deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(-8deg) scale(1.08);
+    }
+}
+
+/* Maqueta Inteligencia MX */
+.intel-visual {
+    height: 110px;
+    width: 100%;
+}
+
+.intel-bars {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.intel-bars i {
+    flex: 1;
+    height: var(--h);
+    border-radius: 6px 6px 0 0;
+    background: linear-gradient(180deg, rgba(167, 139, 250, 0.7), rgba(167, 139, 250, 0.05));
+    transform-origin: bottom;
+    animation: barGrow 3.5s ease-in-out infinite alternate;
+}
+
+.intel-bars i:nth-child(even) {
+    animation-delay: 0.6s;
+}
+
+@keyframes barGrow {
+    from {
+        transform: scaleY(0.75);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+
+.intel-line {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.intel-line polyline {
+    fill: none;
+    stroke: var(--primary-300);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+    filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.7));
+}
+
+/* Apps */
+.bento-apps-body {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.bento-apps-body>div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.app-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.app-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-chip:hover {
+    color: #000;
+    background: var(--primary-400);
+    border-color: var(--primary-400);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+@media (max-width: 991px) {
+    .bento {
+        grid-template-columns: 1fr;
+    }
+
+    .bento-timbra,
+    .bento-intel,
+    .bento-apps {
+        grid-column: auto;
+    }
+
+    .bento-timbra {
+        flex-direction: column;
+    }
+
+    .bento-card {
+        padding: 1.75rem;
+        border-radius: 1.5rem;
+    }
+
+    .invoice-mock {
+        margin: 0.5rem auto 1rem;
+    }
+
+    .bento-apps-body {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-minimal::after,
+    .live-dot,
+    .invoice-stamp,
+    .intel-bars i {
+        animation: none;
+    }
+}
