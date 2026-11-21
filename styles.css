@@ -2445,9 +2445,10 @@ select option {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 50%;
     height: 100%;
+    will-change: transform, opacity;
     background: linear-gradient(90deg,
             transparent,
             var(--primary-400),
@@ -2469,7 +2470,7 @@ select option {
 
 @keyframes eduPulseLaser {
     0% {
-        left: -100%;
+        transform: translateX(-200%);
         opacity: 0;
     }
 
@@ -2477,13 +2478,9 @@ select option {
         opacity: 1;
     }
 
-    60% {
-        left: 100%;
-        opacity: 0;
-    }
-
+    60%,
     100% {
-        left: 100%;
+        transform: translateX(200%);
         opacity: 0;
     }
 }
@@ -3707,7 +3704,8 @@ select option {
     left: 50%;
     transform: translateX(-50%);
     width: 2px;
-    height: 0;
+    height: 200px;
+    transform-origin: top center;
     background: var(--primary-400);
     box-shadow: 0 0 15px var(--primary-400), 0 0 30px var(--primary-400);
     animation: laserShoot 5s ease-in-out infinite;
@@ -3785,23 +3783,18 @@ select option {
 
     0%,
     25% {
-        height: 0;
+        transform: translateX(-50%) scaleY(0);
         opacity: 0;
     }
 
-    35% {
-        height: 200px;
-        opacity: 1;
-    }
-
+    35%,
     75% {
-        height: 200px;
+        transform: translateX(-50%) scaleY(1);
         opacity: 1;
     }
 
-    85%,
     100% {
-        height: 0;
+        transform: translateX(-50%) scaleY(0);
         opacity: 0;
     }
 }
@@ -5391,5 +5384,117 @@ body.loading {
 @media (max-width: 600px) {
     .svc-compact .svc-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================================================================
+   AUDITORÍA VISUAL (anclas, menú, tap targets, tipografía, safe areas, motion)
+   ========================================================================== */
+html {
+    scroll-padding-top: 96px;
+    overflow-x: clip;
+}
+
+.mobile-menu-btn {
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+}
+
+a.svc-link,
+.footer-links a,
+.profile-link-arrow,
+.blog-read-more {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+}
+
+.blog-topics a,
+.app-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+}
+
+#educacion,
+#certificaciones-overdrive {
+    padding-top: clamp(48px, 10vw, 88px);
+    padding-bottom: clamp(48px, 10vw, 88px);
+}
+
+#educacion {
+    min-height: 0;
+}
+
+.wa-float {
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    right: calc(1.25rem + env(safe-area-inset-right, 0px));
+}
+
+@media (max-width: 480px) {
+
+    .work-lock,
+    .blog-cat,
+    .svc-pill,
+    .bento-badge,
+    .section-kicker,
+    .work-label span,
+    .work-cat,
+    .hero-trust {
+        font-size: 12px;
+    }
+
+    .svc-compact .svc-card p,
+    .svc-compact .price-list li,
+    .svc-compact .svc-checks li,
+    .bento-card p,
+    .blog-excerpt,
+    .step p,
+    .v2-lead {
+        font-size: 14px;
+    }
+
+    .wa-float {
+        bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+        right: calc(1rem + env(safe-area-inset-right, 0px));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal,
+    .reveal-3d,
+    .eco-container,
+    .blog-card {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .marquee-track {
+        transform: none !important;
+    }
+
+    .particles-container,
+    .hero-bg-network {
+        display: none !important;
+    }
+
+    #preloader {
+        display: none !important;
     }
 }

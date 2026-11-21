@@ -1,17 +1,26 @@
+const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const CAN_HOVER = window.matchMedia('(hover: hover)').matches;
+
 document.addEventListener('DOMContentLoaded', () => {
     // ─── PRELOADER CONTROL ──────────────────────────────────────────────────
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        // Duración de exactamente 4 segundos (4000ms)
-        setTimeout(() => {
-            preloader.classList.add('fade-out');
-            document.body.classList.remove('loading');
-
-            // Eliminar del DOM después de la transición de fade para optimizar
+        // Se quita al cargar la página: mínimo 400 ms (sin parpadeo) y tope de 1200 ms.
+        const inicio = performance.now();
+        let hecho = false;
+        const ocultar = () => {
+            if (hecho) return;
+            hecho = true;
+            const espera = RM ? 0 : Math.max(0, 400 - (performance.now() - inicio));
             setTimeout(() => {
-                preloader.remove();
-            }, 800);
-        }, 900);
+                preloader.classList.add('fade-out');
+                document.body.classList.remove('loading');
+                setTimeout(() => preloader.remove(), RM ? 0 : 800);
+            }, espera);
+        };
+        if (RM || document.readyState === 'complete') ocultar();
+        else window.addEventListener('load', ocultar, { once: true });
+        setTimeout(ocultar, 1200);
     }
 
 
@@ -57,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(href);
             if (target) {
                 const navbarHeight = navbar.offsetHeight;
-                const targetPos = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+                const targetPos = target.getBoundingClientRect().top + window.scrollY - (navbar.getBoundingClientRect().bottom + 16);
                 window.scrollTo({ top: targetPos, behavior: 'smooth' });
             }
         });
@@ -65,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ─── PARTICLES SYSTEM ───────────────────────────────────────────────────
     const particlesContainer = document.getElementById('particles');
-    const particleCount = window.innerWidth < 768 ? 20 : 50;
+    const particleCount = RM ? 0 : (window.innerWidth < 768 ? 18 : 50);
 
     for (let i = 0; i < particleCount; i++) {
         createParticle();
@@ -239,8 +248,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    (() => {
     const container = document.getElementById('network-bg');
-    if (!container) return;
+    if (!container || RM) return;
 
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d', { alpha: true });
@@ -284,7 +294,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     init();
 
+    let visible = true;
+    let corriendo = false;
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([e]) => {
+            visible = e.isIntersecting;
+            if (visible && !corriendo) { corriendo = true; requestAnimationFrame(loop); }
+        }).observe(container);
+    }
+
     function loop() {
+        if (!visible) { corriendo = false; return; }
         ctx.clearRect(0, 0, w, h);
 
         for (let i = 0; i < particles.length; i++) {
@@ -309,7 +329,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         requestAnimationFrame(loop);
     }
+    corriendo = true;
     requestAnimationFrame(loop);
+    })();
 
     // --- REVEAL & PARALLAX SECCIÓN ECOSISTEMA ---
     const ecoContainer = document.querySelector('.eco-container');
@@ -326,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(ecoContainer);
     }
 
-    if (ecoSection) {
+    if (ecoSection && CAN_HOVER) {
         ecoSection.addEventListener('mousemove', (e) => {
             if (window.innerWidth > 991) {
                 const x = (e.clientX / window.innerWidth - 0.5) * 30;
@@ -386,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const fallbackSvg = '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>';
                 const thumbHTML = thumbUrl
-                    ? `<img src="${esc(thumbUrl)}" alt="" loading="lazy" onerror="this.remove()"><div class="blog-thumb-fallback">${fallbackSvg}</div>`
+                    ? `<img src="${esc(thumbUrl)}" alt="${esc(title)}" width="1200" height="630" loading="lazy" decoding="async" onerror="this.remove()"><div class="blog-thumb-fallback">${fallbackSvg}</div>`
                     : `<div class="blog-thumb-fallback">${fallbackSvg}</div>`;
 
                 const cardHTML = `
@@ -480,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Magnetic Hover
     const magneticItems = document.querySelectorAll('.cert-magnetic');
-    magneticItems.forEach(item => {
+    if (CAN_HOVER) magneticItems.forEach(item => {
         item.addEventListener('mousemove', (e) => {
             const rect = item.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
@@ -512,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        certSection.addEventListener('mousemove', (e) => {
+        if (CAN_HOVER) certSection.addEventListener('mousemove', (e) => {
             if (window.innerWidth <= 768) return;
             const x = (e.clientX / window.innerWidth - 0.5) * 20;
             const y = (e.clientY / window.innerHeight - 0.5) * 20;
@@ -527,6 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function runTypewriter(el) {
         const fullText = el.getAttribute('data-text');
+        if (RM) { el.textContent = fullText.replace(/\s+/g, ' ').trim(); return; }
         let currentText = "";
         let index = 0;
 
@@ -570,6 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrambleText = (el) => {
         const originalText = el.getAttribute('data-text');
         if (!originalText) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.innerText = originalText; return; }
 
         let iteration = 0;
         clearInterval(el.dataset.scrambleInterval);
