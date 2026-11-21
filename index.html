@@ -60,7 +60,7 @@
 </head>
 
 <body class="loading">
-    <a href="#servicios" class="skip-link">Saltar al contenido</a>
+    <a href="#ecosistema" class="skip-link">Saltar al contenido</a>
 
     <!-- Pantalla de carga -->
     <div id="preloader">
@@ -80,9 +80,9 @@
                 <img src="images/logo.png" alt="ErickDDP" height="44" width="44">
             </a>
             <div class="nav-links">
+                <a href="#ecosistema">Productos</a>
                 <a href="#servicios">Servicios</a>
                 <a href="#portafolio">Portafolio</a>
-                <a href="#ecosistema">Productos</a>
                 <a href="#blog">Blog</a>
                 <a href="#sobre-mi">Sobre mí</a>
             </div>
@@ -98,9 +98,9 @@
 
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
         <button class="close-btn" id="mobileNavClose" aria-label="Cerrar menú">✕</button>
+        <a href="#ecosistema">Productos</a>
         <a href="#servicios">Servicios</a>
         <a href="#portafolio">Portafolio</a>
-        <a href="#ecosistema">Productos</a>
         <a href="#blog">Blog</a>
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#contacto">Contacto</a>
@@ -122,7 +122,7 @@
             <p class="brand-phrase">Construyo el puente entre las <span class="highlight">finanzas</span> y la <span
                     class="highlight">tecnología</span> que viene.</p>
             <div class="hero-cta">
-                <a href="#servicios" class="btn btn-primary btn-lg btn-glow">Ver servicios</a>
+                <a href="#ecosistema" class="btn btn-primary btn-lg btn-glow">Lo que construí</a>
                 <a href="#portafolio" class="btn btn-outline btn-lg">Ver portafolio</a>
             </div>
             <ul class="hero-trust" aria-label="Credenciales">
@@ -140,8 +140,112 @@
         </div>
     </header>
 
+
+    <!-- PRODUCTOS -->
+    <section id="ecosistema" class="eco-section">
+        <div class="eco-heading">
+            <p class="section-kicker reveal">Productos</p>
+            <h2 class="section-title reveal">Lo construí<br><span class="grad-text">para ti</span></h2>
+            <p class="v2-lead reveal">Herramientas propias donde junto contabilidad, tecnología e IA.</p>
+        </div>
+        <div class="container eco-container bento">
+
+            <!-- TIMBRA -->
+            <a href="https://factura.erickddp.com" target="_blank" rel="noopener" class="bento-card bento-timbra">
+                <div class="bento-glow"></div>
+                <div class="bento-body">
+                    <span class="bento-badge"><i class="live-dot"></i> Facturación CFDI</span>
+                    <h3>Timbra</h3>
+                    <p>Tus facturas, claras. Súbelas, míralas y factura sin vueltas. Sin renta mensual: solo pagas
+                        los timbres que usas.</p>
+                    <ul class="bento-tags">
+                        <li>$890 · 1,000 timbres</li>
+                        <li>Vigencia 12 meses</li>
+                        <li>Sin renta mensual</li>
+                        <li>Fiscal Pro gratis en prueba</li>
+                    </ul>
+                    <span class="bento-cta">Abrir Timbra <span>→</span></span>
+                </div>
+                <div class="bento-visual" aria-hidden="true">
+                    <div class="invoice-mock">
+                        <div class="invoice-head">
+                            <span>FACTURA</span><b>A-0142</b>
+                        </div>
+                        <div class="invoice-row"><i></i><i></i></div>
+                        <div class="invoice-row"><i></i><i></i></div>
+                        <div class="invoice-row short"><i></i><i></i></div>
+                        <div class="invoice-total"><span>Total</span><b>$ 4,640.00</b></div>
+                        <div class="invoice-stamp">✓ TIMBRADA</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- INTELIGENCIA MX -->
+            <a href="https://erickddp.github.io/inteligencia-mx/" target="_blank" rel="noopener"
+                class="bento-card bento-intel">
+                <div class="bento-glow"></div>
+                <div class="bento-body">
+                    <span class="bento-badge"><i class="live-dot"></i> Acceso público</span>
+                    <h3>Inteligencia MX</h3>
+                    <p>Consola pública de consulta fiscal: 27 leyes con su fuente oficial, 137 cifras de ley y 129 reglas de cálculo. Orientación, no asesoría.</p>
+                    <span class="bento-cta">Explorar <span>→</span></span>
+                </div>
+                <div class="bento-visual intel-visual" aria-hidden="true">
+                    <div class="intel-bars">
+                        <i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:45%"></i>
+                        <i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:95%"></i>
+                    </div>
+                    <svg viewBox="0 0 200 60" preserveAspectRatio="none" class="intel-line">
+                        <polyline points="0,48 35,38 70,42 105,22 140,30 200,8" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- PROYECTOS Y APPS -->
+            <div class="bento-card bento-apps">
+                <div class="bento-glow"></div>
+                <div class="bento-body bento-apps-body">
+                    <div>
+                        <span class="bento-badge">Experimentos y Desarrollo</span>
+                        <h3>Proyectos y Apps</h3>
+                        <p>Herramientas fiscales, automatizaciones y apps que construyo en público.</p>
+                    </div>
+                    <div class="app-chips">
+                        <a href="https://myfiscal.erickddp.com" target="_blank" rel="noopener" class="app-chip">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                            myfiscal
+                        </a>
+                        <a href="https://evoapp.erickddp.com" target="_blank" rel="noopener" class="app-chip">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                            evoapp
+                        </a>
+                        <a href="https://proyectos.erickddp.com/" target="_blank" rel="noopener" class="app-chip">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                            ver todos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SERVICIOS -->
-    <section id="servicios" class="v2-section">
+    <section id="servicios" class="v2-section svc-compact">
         <div class="container">
             <div class="v2-heading">
                 <p class="section-kicker reveal">Servicios</p>
@@ -313,108 +417,6 @@
         </div>
     </section>
 
-    <!-- PRODUCTOS -->
-    <section id="ecosistema" class="eco-section">
-        <div class="eco-heading">
-            <p class="section-kicker reveal">Productos</p>
-            <h2 class="section-title reveal">Lo construí<br><span class="grad-text">para ti</span></h2>
-            <p class="v2-lead reveal">Herramientas propias donde junto contabilidad, tecnología e IA.</p>
-        </div>
-        <div class="container eco-container bento">
-
-            <!-- TIMBRA -->
-            <a href="https://factura.erickddp.com" target="_blank" rel="noopener" class="bento-card bento-timbra">
-                <div class="bento-glow"></div>
-                <div class="bento-body">
-                    <span class="bento-badge"><i class="live-dot"></i> Facturación CFDI</span>
-                    <h3>Timbra</h3>
-                    <p>Tus facturas, claras. Súbelas, míralas y factura sin vueltas. Sin renta mensual: solo pagas
-                        los timbres que usas.</p>
-                    <ul class="bento-tags">
-                        <li>$890 · 1,000 timbres</li>
-                        <li>Vigencia 12 meses</li>
-                        <li>Sin renta mensual</li>
-                        <li>Fiscal Pro gratis en prueba</li>
-                    </ul>
-                    <span class="bento-cta">Abrir Timbra <span>→</span></span>
-                </div>
-                <div class="bento-visual" aria-hidden="true">
-                    <div class="invoice-mock">
-                        <div class="invoice-head">
-                            <span>FACTURA</span><b>A-0142</b>
-                        </div>
-                        <div class="invoice-row"><i></i><i></i></div>
-                        <div class="invoice-row"><i></i><i></i></div>
-                        <div class="invoice-row short"><i></i><i></i></div>
-                        <div class="invoice-total"><span>Total</span><b>$ 4,640.00</b></div>
-                        <div class="invoice-stamp">✓ TIMBRADA</div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- INTELIGENCIA MX -->
-            <a href="https://erickddp.github.io/inteligencia-mx/" target="_blank" rel="noopener"
-                class="bento-card bento-intel">
-                <div class="bento-glow"></div>
-                <div class="bento-body">
-                    <span class="bento-badge"><i class="live-dot"></i> Acceso público</span>
-                    <h3>Inteligencia MX</h3>
-                    <p>Consola pública de consulta fiscal: 27 leyes con su fuente oficial, 137 cifras de ley y 129 reglas de cálculo. Orientación, no asesoría.</p>
-                    <span class="bento-cta">Explorar <span>→</span></span>
-                </div>
-                <div class="bento-visual intel-visual" aria-hidden="true">
-                    <div class="intel-bars">
-                        <i style="--h:35%"></i><i style="--h:60%"></i><i style="--h:45%"></i>
-                        <i style="--h:80%"></i><i style="--h:55%"></i><i style="--h:95%"></i>
-                    </div>
-                    <svg viewBox="0 0 200 60" preserveAspectRatio="none" class="intel-line">
-                        <polyline points="0,48 35,38 70,42 105,22 140,30 200,8" />
-                    </svg>
-                </div>
-            </a>
-
-            <!-- PROYECTOS Y APPS -->
-            <div class="bento-card bento-apps">
-                <div class="bento-glow"></div>
-                <div class="bento-body bento-apps-body">
-                    <div>
-                        <span class="bento-badge">Experimentos y Desarrollo</span>
-                        <h3>Proyectos y Apps</h3>
-                        <p>Herramientas fiscales, automatizaciones y apps que construyo en público.</p>
-                    </div>
-                    <div class="app-chips">
-                        <a href="https://myfiscal.erickddp.com" target="_blank" rel="noopener" class="app-chip">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                            </svg>
-                            myfiscal
-                        </a>
-                        <a href="https://evoapp.erickddp.com" target="_blank" rel="noopener" class="app-chip">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="3" width="7" height="7"></rect>
-                                <rect x="14" y="14" width="7" height="7"></rect>
-                                <rect x="3" y="14" width="7" height="7"></rect>
-                            </svg>
-                            evoapp
-                        </a>
-                        <a href="https://proyectos.erickddp.com/" target="_blank" rel="noopener" class="app-chip">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                            </svg>
-                            ver todos
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- BLOG -->
     <section id="blog" class="blog-section v2-section">
