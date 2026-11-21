@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 preloader.remove();
             }, 800);
-        }, 1500);
+        }, 900);
     }
 
 
@@ -340,62 +340,65 @@ document.addEventListener('DOMContentLoaded', () => {
     // ─── BLOG FEED FETCH (JSONP) ────────────────────────────────────────────
     const blogGrid = document.getElementById('blog-grid');
     if (blogGrid) {
+        const esc = (str) => String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        const fallbackMsg = '<p class="blog-empty">No se pudieron cargar los artículos. <a href="https://blog.erickddp.com" target="_blank" rel="noopener">Visita el blog directamente →</a></p>';
+        const GENERIC_TAGS = ['PyMEs', 'Opinión'];
+
         window.blogFeedCallback = function (data) {
-            const posts = data.feed.entry || [];
+            const posts = (data && data.feed && data.feed.entry) || [];
             blogGrid.innerHTML = '';
 
             if (posts.length === 0) {
-                blogGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">No hay artículos disponibles en este momento.</p>';
+                blogGrid.innerHTML = fallbackMsg;
                 return;
             }
 
             posts.forEach((post, index) => {
                 const title = post.title.$t;
-                let link = '#';
-                if (post.link) {
-                    for (let i = 0; i < post.link.length; i++) {
-                        if (post.link[i].rel === 'alternate') {
-                            link = post.link[i].href;
-                            break;
-                        }
-                    }
-                }
+                const alt = (post.link || []).find(l => l.rel === 'alternate');
+                const link = alt ? alt.href : 'https://blog.erickddp.com';
 
-                const puDate = new Date(post.published.$t);
-                const formattedDate = puDate.toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
+                const formattedDate = new Date(post.published.$t)
+                    .toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' });
 
-                let contentHtml = post.content ? post.content.$t : (post.summary ? post.summary.$t : '');
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = contentHtml;
-                const textContent = tempDiv.textContent || tempDiv.innerText || '';
-                const excerpt = textContent.replace(/\s+/g, ' ').trim().substring(0, 120) + '...';
+                const contentHtml = post.content ? post.content.$t : (post.summary ? post.summary.$t : '');
+                const doc = new DOMParser().parseFromString(contentHtml, 'text/html');
+                let text = (doc.body.textContent || '').replace(/\s+/g, ' ').trim();
+                const words = text ? text.split(' ').length : 0;
+                const minutes = Math.max(1, Math.round(words / 220));
+
+                // Quita la nota de "ejemplo ilustrativo" para que el extracto empiece con el gancho
+                text = text.replace(/^Ejemplo ilustrativo[^.]*\.\s*/i, '');
+                const limit = index === 0 ? 220 : 130;
+                let excerpt = text.length > limit ? text.slice(0, limit) : text;
+                if (text.length > limit) excerpt = excerpt.slice(0, excerpt.lastIndexOf(' ')) + '…';
+
+                const cats = (post.category || []).map(c => c.term);
+                const cat = cats.find(c => !GENERIC_TAGS.includes(c)) || cats[0] || 'Blog';
 
                 let thumbUrl = '';
                 if (post.media$thumbnail) {
-                    thumbUrl = post.media$thumbnail.url.replace(/\/s[0-9]+(\-c)?\//, '/s600/');
+                    thumbUrl = post.media$thumbnail.url.replace(/\/s[0-9]+(-c)?\//, '/s1200/').replace(/=s[0-9]+(-c)?$/, '=s1200');
                 } else {
-                    const imgMatch = contentHtml.match(/<img[^>]+src="([^">]+)"/);
-                    if (imgMatch && imgMatch[1]) {
-                        thumbUrl = imgMatch[1];
-                    }
+                    const img = doc.querySelector('img');
+                    if (img) thumbUrl = img.getAttribute('src');
                 }
 
-                const fallbackSvg = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>';
+                const fallbackSvg = '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>';
                 const thumbHTML = thumbUrl
-                    ? `<img src="${thumbUrl}" alt="${title}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                       <div class="blog-thumb-fallback" style="display:none;">${fallbackSvg}</div>`
+                    ? `<img src="${esc(thumbUrl)}" alt="" loading="lazy" onerror="this.remove()"><div class="blog-thumb-fallback">${fallbackSvg}</div>`
                     : `<div class="blog-thumb-fallback">${fallbackSvg}</div>`;
 
-                const delay = index * 0.15;
                 const cardHTML = `
-                    <a href="${link}" target="_blank" rel="noopener" class="blog-card reveal" style="animation-delay: ${delay}s">
+                    <a href="${esc(link)}" target="_blank" rel="noopener" class="blog-card reveal${index === 0 ? ' blog-featured' : ''}" style="transition-delay: ${index * 0.1}s">
                         <div class="blog-thumb">
                             ${thumbHTML}
+                            <span class="blog-cat">${esc(cat)}</span>
                         </div>
                         <div class="blog-content">
-                            <div class="blog-meta">${formattedDate}</div>
-                            <h3 class="blog-title">${title}</h3>
-                            <p class="blog-excerpt">${excerpt}</p>
+                            <div class="blog-meta">${esc(formattedDate)} · ${minutes} min de lectura</div>
+                            <h3 class="blog-title">${esc(title)}</h3>
+                            <p class="blog-excerpt">${esc(excerpt)}</p>
                             <div class="blog-read-more">Leer artículo <span>→</span></div>
                         </div>
                     </a>
@@ -403,18 +406,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 blogGrid.insertAdjacentHTML('beforeend', cardHTML);
             });
 
-            // Trigger reveal for new cards
             setTimeout(() => {
-                document.querySelectorAll('#blog-grid .reveal').forEach(el => {
-                    el.classList.add('visible');
-                });
+                document.querySelectorAll('#blog-grid .reveal').forEach(el => el.classList.add('visible'));
             }, 50);
         };
 
         const script = document.createElement('script');
-        script.src = 'https://blog.erickddp.com/feeds/posts/default?alt=json-in-script&max-results=3&callback=blogFeedCallback';
+        script.src = 'https://blog.erickddp.com/feeds/posts/default?alt=json-in-script&max-results=4&callback=blogFeedCallback';
         script.onerror = function () {
-            blogGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1/-1;">No se pudieron cargar los artículos. <br><a href="https://blog.erickddp.com" target="_blank" style="color: var(--primary-400);">Visita el blog directamente →</a></p>';
+            blogGrid.innerHTML = fallbackMsg;
         };
         document.body.appendChild(script);
     }

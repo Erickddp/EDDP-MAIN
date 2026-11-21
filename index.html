@@ -4,9 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ErickDDP | Contador Público + IA · Timbra</title>
+    <title>Erick DDP | Contador Público, Páginas Web e IA para negocios</title>
     <meta name="description"
-        content="Asesoría fiscal, contabilidad digital y digitalización de negocios con Inteligencia Artificial. Atención directa en CDMX.">
+        content="Contador Público que construye tecnología: páginas web y tiendas en línea desde $1,800, facturación CFDI con Timbra, contabilidad y orientación fiscal, y automatización con IA. Web, facturas y contabilidad en un solo lugar.">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://erickddp.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:site_name" content="Erick DDP">
+    <meta property="og:url" content="https://erickddp.com/">
+    <meta property="og:title" content="Erick DDP · Contabilidad + Tecnología + IA">
+    <meta property="og:description"
+        content="Páginas web, facturación CFDI, contabilidad y automatización con IA. Un solo lugar para tu web, tus facturas y tu contabilidad.">
+    <meta property="og:image" content="https://erickddp.com/images/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "EDDP Servicios",
+        "url": "https://erickddp.com/",
+        "image": "https://erickddp.com/images/og.jpg",
+        "logo": "https://erickddp.com/images/logo.png",
+        "telephone": "+52 55 3480 6184",
+        "areaServed": "MX",
+        "address": { "@type": "PostalAddress", "addressLocality": "Ciudad de México", "addressCountry": "MX" },
+        "founder": { "@type": "Person", "name": "Erick Domínguez Del Prado", "jobTitle": "Contador Público" },
+        "sameAs": [
+            "https://blog.erickddp.com",
+            "https://github.com/Erickddp",
+            "https://www.linkedin.com/in/erick-dominguez-4296411a9/",
+            "https://www.facebook.com/profile.php?id=61584844233250"
+        ],
+        "makesOffer": [
+            { "@type": "Offer", "name": "Landing page", "price": "1800", "priceCurrency": "MXN" },
+            { "@type": "Offer", "name": "Sitio web completo", "price": "3800", "priceCurrency": "MXN" },
+            { "@type": "Offer", "name": "Tienda en línea", "price": "7500", "priceCurrency": "MXN" }
+        ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,7 +59,9 @@
 </head>
 
 <body class="loading">
-    <!-- Pantalla de Carga Premium -->
+    <a href="#servicios" class="skip-link">Saltar al contenido</a>
+
+    <!-- Pantalla de carga -->
     <div id="preloader">
         <div class="preloader-content">
             <div class="logo-container">
@@ -30,23 +73,20 @@
 
     <div class="particles-container" id="particles"></div>
 
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Principal">
         <div class="container navbar-content">
-            <a href="#" class="logo">
-                <img src="images/logo.png" alt="ErickDDP Logo" height="44"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                <span class="logo-fallback"
-                    style="display:none; color: var(--primary-400); font-weight: 800; font-size: 1.25rem; font-family: var(--font-sans);">ErickDDP</span>
+            <a href="#hero" class="logo" aria-label="Inicio">
+                <img src="images/logo.png" alt="ErickDDP" height="44" width="44">
             </a>
             <div class="nav-links">
-                <a href="#ecosistema">Proyectos</a>
-                <a href="#educacion">Educación</a>
-                <a href="#certificaciones-overdrive">Certificaciones</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#portafolio">Portafolio</a>
+                <a href="#ecosistema">Productos</a>
                 <a href="#blog">Blog</a>
                 <a href="#sobre-mi">Sobre mí</a>
-
             </div>
-            <a href="#contacto" class="btn btn-primary btn-glow">Hablemos</a>
+            <a href="https://wa.me/525534806184?text=Hola%20Erick%2C%20quiero%20cotizar%20un%20proyecto"
+                target="_blank" rel="noopener" class="btn btn-primary btn-glow">Cotizar</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
                 <span></span>
                 <span></span>
@@ -55,26 +95,20 @@
         </div>
     </nav>
 
-    <!-- Mobile Nav Overlay -->
     <div class="mobile-nav-overlay" id="mobileNavOverlay">
         <button class="close-btn" id="mobileNavClose" aria-label="Cerrar menú">✕</button>
-        <a href="#ecosistema">Proyectos</a>
-        <a href="#educacion">Educación</a>
-        <a href="#certificaciones-overdrive">Certificaciones</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#ecosistema">Productos</a>
         <a href="#blog">Blog</a>
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#contacto">Contacto</a>
-        <a href="#contacto" class="btn btn-primary btn-lg">Hablemos</a>
+        <a href="https://wa.me/525534806184?text=Hola%20Erick%2C%20quiero%20cotizar%20un%20proyecto" target="_blank"
+            rel="noopener" class="btn btn-primary btn-lg">Cotizar por WhatsApp</a>
     </div>
 
-
-
-
-
     <header id="hero" class="hero-minimal">
-        <!-- Nuevo fondo con foto para la portada -->
         <div class="hero-bg-photo" id="heroBgPhoto"></div>
-
         <div class="hero-bg-network" id="network-bg" aria-hidden="true"></div>
 
         <div class="container hero-minimal-content">
@@ -87,9 +121,15 @@
             <p class="brand-phrase">Construyo el puente entre las <span class="highlight">finanzas</span> y la <span
                     class="highlight">tecnología</span> que viene.</p>
             <div class="hero-cta">
-                <a href="https://factura.erickddp.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg btn-glow">Probar Timbra</a>
-                <a href="#ecosistema" class="btn btn-outline btn-lg">Ver proyectos</a>
+                <a href="#servicios" class="btn btn-primary btn-lg btn-glow">Ver servicios</a>
+                <a href="#portafolio" class="btn btn-outline btn-lg">Ver portafolio</a>
             </div>
+            <ul class="hero-trust" aria-label="Credenciales">
+                <li>C.P. con cédula</li>
+                <li>+5 años</li>
+                <li>+20 empresas</li>
+                <li>Web · Facturas · Contabilidad</li>
+            </ul>
         </div>
 
         <div class="scroll-indicator" aria-hidden="true">
@@ -99,20 +139,205 @@
         </div>
     </header>
 
+    <!-- SERVICIOS -->
+    <section id="servicios" class="v2-section">
+        <div class="container">
+            <div class="v2-heading">
+                <p class="section-kicker reveal">Servicios</p>
+                <h2 class="section-title reveal">Tu negocio, <span class="grad-text">en regla y en línea</span></h2>
+                <p class="v2-lead reveal">Un solo lugar para tu web, tus facturas y tu contabilidad. Soy contador
+                    público, así que tu página nace con lo legal y lo fiscal resuelto desde el día uno.</p>
+            </div>
 
+            <div class="svc-grid">
+                <!-- Diseño web (destacado) -->
+                <article class="svc-card svc-featured reveal">
+                    <div class="svc-top">
+                        <span class="svc-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" />
+                                <path d="M8 21h8M12 17v4" />
+                            </svg>
+                        </span>
+                        <span class="svc-pill">Más pedido</span>
+                    </div>
+                    <h3>Páginas web y tiendas en línea</h3>
+                    <p>Sitios bonitos, rápidos y listos para vender. Diseño a la medida, optimizado para celular y con
+                        botón directo a WhatsApp.</p>
+                    <ul class="price-list">
+                        <li><span>Landing page</span><b>desde $1,800</b></li>
+                        <li><span>Sitio completo</span><b>desde $3,800</b></li>
+                        <li><span>Tienda en línea</span><b>desde $7,500</b></li>
+                        <li><span>Mantenimiento opcional</span><b>desde $300/mes</b></li>
+                    </ul>
+                    <ul class="svc-checks">
+                        <li>Aviso de privacidad y términos y condiciones</li>
+                        <li>Facturación conectada a tu negocio</li>
+                        <li>Orientación contable y fiscal para no llevarte sorpresas con el SAT</li>
+                    </ul>
+                    <div class="svc-actions">
+                        <a href="https://wa.me/525534806184?text=Hola%20Erick%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web"
+                            target="_blank" rel="noopener" class="btn btn-primary">Cotizar mi página</a>
+                        <a href="#portafolio" class="svc-link">Ver trabajos →</a>
+                    </div>
+                </article>
 
+                <!-- Contabilidad -->
+                <article class="svc-card reveal">
+                    <span class="svc-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14" />
+                            <path d="M2 21h20M8 7h8M8 11h8M8 15h4" />
+                        </svg>
+                    </span>
+                    <h3>Contabilidad y asesoría fiscal</h3>
+                    <p>Contabilidad mensual, declaraciones ante el SAT y orientación fiscal para personas y negocios.
+                        Atención directa con un contador público.</p>
+                    <a href="https://wa.me/525534806184?text=Hola%20Erick%2C%20necesito%20ayuda%20con%20mi%20contabilidad"
+                        target="_blank" rel="noopener" class="svc-link">Agendar asesoría →</a>
+                </article>
 
+                <!-- Facturación -->
+                <article class="svc-card reveal">
+                    <span class="svc-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <path d="M14 2v6h6M9 15l2 2 4-4" />
+                        </svg>
+                    </span>
+                    <h3>Facturación CFDI con Timbra</h3>
+                    <p>Factura sin renta mensual: pagas solo los timbres que usas. $890 por 1,000 timbres con 12 meses
+                        de vigencia.</p>
+                    <a href="https://factura.erickddp.com" target="_blank" rel="noopener" class="svc-link">Probar
+                        Timbra →</a>
+                </article>
 
+                <!-- IA -->
+                <article class="svc-card reveal">
+                    <span class="svc-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
+                            <circle cx="12" cy="12" r="4" />
+                        </svg>
+                    </span>
+                    <h3>Automatización e IA</h3>
+                    <p>Flujos que ahorran horas: clasificación de gastos, reportes automáticos, chatbots y conexiones
+                        entre tus herramientas, siempre con supervisión humana.</p>
+                    <a href="https://wa.me/525534806184?text=Hola%20Erick%2C%20me%20interesa%20automatizar%20mi%20negocio"
+                        target="_blank" rel="noopener" class="svc-link">Platicar mi idea →</a>
+                </article>
+            </div>
+        </div>
+    </section>
 
+    <!-- PORTAFOLIO -->
+    <section id="portafolio" class="v2-section">
+        <div class="container">
+            <div class="v2-heading">
+                <p class="section-kicker reveal">Portafolio</p>
+                <h2 class="section-title reveal">Páginas que <span class="grad-text">ya están vendiendo</span></h2>
+                <p class="v2-lead reveal">Cada sitio se diseña desde cero para el negocio y su cliente. Da clic para
+                    verlos en vivo.</p>
+            </div>
 
+            <div class="work-grid">
+                <a href="https://renovablesasr.com" target="_blank" rel="noopener" class="work-card reveal">
+                    <div class="work-shot">
+                        <img src="images/portfolio/renovables.webp" alt="Sitio web de ASR Renovables"
+                            loading="lazy" width="1200" height="750">
+                        <span class="work-url">renovablesasr.com</span>
+                    </div>
+                    <div class="work-info">
+                        <div>
+                            <span class="work-cat">Energía solar · Ciudad Juárez</span>
+                            <h3>ASR Renovables</h3>
+                            <p>Sitio con calculadora de ahorro según el recibo de CFE, escena 3D al atardecer y
+                                cotización directa por WhatsApp.</p>
+                        </div>
+                        <ul class="work-tags">
+                            <li>Calculadora</li>
+                            <li>3D</li>
+                            <li>Leads por WhatsApp</li>
+                        </ul>
+                    </div>
+                </a>
 
+                <a href="https://goat-beer.vercel.app/" target="_blank" rel="noopener" class="work-card reveal">
+                    <div class="work-shot">
+                        <img src="images/portfolio/goatbeer.webp" alt="Sitio web de Drunk G.O.A.T. Brewery"
+                            loading="lazy" width="1200" height="750">
+                        <span class="work-url">Vista previa</span>
+                    </div>
+                    <div class="work-info">
+                        <div>
+                            <span class="work-cat">Cerveza artesanal · Juárez · El Paso</span>
+                            <h3>Drunk G.O.A.T. Brewery</h3>
+                            <p>Experiencia de marca con verificación de edad, animación de producto al hacer scroll,
+                                sonido ambiente y tienda.</p>
+                        </div>
+                        <ul class="work-tags">
+                            <li>Storytelling</li>
+                            <li>Animación</li>
+                            <li>Tienda</li>
+                        </ul>
+                    </div>
+                </a>
 
+                <a href="https://wa.me/525534806184?text=Hola%20Erick%2C%20quiero%20que%20mi%20negocio%20sea%20el%20siguiente%20en%20tu%20portafolio"
+                    target="_blank" rel="noopener" class="work-card work-next reveal">
+                    <div class="work-next-inner">
+                        <span class="work-plus" aria-hidden="true">+</span>
+                        <h3>Tu negocio aquí</h3>
+                        <p>Landing desde $1,800. Cuéntame tu idea y te digo cómo se vería.</p>
+                        <span class="btn btn-primary">Empezar mi proyecto</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <!-- SECCIÓN PROYECTOS: TIMBRA · INTELIGENCIA MX · APPS -->
+    <!-- PROCESO -->
+    <section id="proceso" class="v2-section v2-tight">
+        <div class="container">
+            <div class="v2-heading">
+                <p class="section-kicker reveal">Cómo trabajo</p>
+                <h2 class="section-title reveal">De la idea a <span class="grad-text">vender en línea</span></h2>
+            </div>
+            <ol class="steps">
+                <li class="step reveal">
+                    <span class="step-n">01</span>
+                    <h3>Diagnóstico</h3>
+                    <p>Platicamos de tu negocio, tu cliente y lo que necesitas vender.</p>
+                </li>
+                <li class="step reveal">
+                    <span class="step-n">02</span>
+                    <h3>Diseño</h3>
+                    <p>Te muestro una vista previa real, como la de Drunk G.O.A.T., antes de publicar.</p>
+                </li>
+                <li class="step reveal">
+                    <span class="step-n">03</span>
+                    <h3>Lanzamiento en regla</h3>
+                    <p>Publicamos con aviso de privacidad, términos y tu facturación lista.</p>
+                </li>
+                <li class="step reveal">
+                    <span class="step-n">04</span>
+                    <h3>Acompañamiento</h3>
+                    <p>Mantenimiento, cambios y orientación contable cuando la necesites.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS -->
     <section id="ecosistema" class="eco-section">
         <div class="eco-heading">
             <p class="section-kicker reveal">Productos</p>
             <h2 class="section-title reveal">Lo construí<br><span class="grad-text">para ti</span></h2>
+            <p class="v2-lead reveal">Herramientas propias donde junto contabilidad, tecnología e IA.</p>
         </div>
         <div class="container eco-container bento">
 
@@ -122,12 +347,13 @@
                 <div class="bento-body">
                     <span class="bento-badge"><i class="live-dot"></i> Facturación CFDI</span>
                     <h3>Timbra</h3>
-                    <p>Factura en segundos, lleva el control de tus ingresos y mantén todo en regla con el SAT.
-                        Hecho para freelancers y negocios en México.</p>
+                    <p>Tus facturas, claras. Súbelas, míralas y factura sin vueltas. Sin renta mensual: solo pagas
+                        los timbres que usas.</p>
                     <ul class="bento-tags">
-                        <li>CFDI 4.0</li>
-                        <li>Clientes y productos</li>
-                        <li>Reportes</li>
+                        <li>$890 · 1,000 timbres</li>
+                        <li>Vigencia 12 meses</li>
+                        <li>Sin renta mensual</li>
+                        <li>Fiscal Pro gratis en prueba</li>
                     </ul>
                     <span class="bento-cta">Abrir Timbra <span>→</span></span>
                 </div>
@@ -209,210 +435,39 @@
         </div>
     </section>
 
-    <!-- 3. SECCIÓN EDUCACIÓN -->
-    <section id="educacion" class="edu-section">
-        <div class="edu-heading container">
-            <h2 class="section-title reveal">Formación <span style="color: var(--primary-400);">Profesional</span></h2>
-        </div>
-        <div class="container edu-container reveal">
-            <!-- Card A: Contaduría -->
-            <div class="edu-card">
-                <div class="edu-card-glow"></div>
-                <div class="edu-card-content">
-                    <img src="__LOGO_CONTADURIA__" alt="Logo Contaduría" class="edu-logo"
-                        onerror="this.style.display='none'">
-                    <h3>Lic. en Contaduría Pública</h3>
-                    <div class="edu-inst">CESCIJUC <br> Ced Prof. 13182616</div>
-
-                    <div class="edu-timeline">
-                        <div class="edu-line-container">
-                            <div class="edu-node"></div>
-                            <div class="edu-line"></div>
-                            <div class="edu-node"></div>
-                        </div>
-                        <div class="edu-dates">
-                            <span>2019</span>
-                            <span>2022</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card B: Inteligencia Artificial -->
-            <div class="edu-card">
-                <div class="edu-card-glow edu-glow-active"></div>
-                <div class="edu-card-content">
-                    <img src="__LOGO_IA__" alt="Logo IA" class="edu-logo" onerror="this.style.display='none'">
-                    <h3>Lic. en Inteligencia Artificial</h3>
-                    <div class="edu-inst">UTEL <br> Matricula: 010818927</div>
-
-                    <div class="edu-timeline">
-                        <div class="edu-line-container">
-                            <div class="edu-node"></div>
-                            <div class="edu-line-dashed-container">
-                                <div class="edu-line-dashed"></div>
-                            </div>
-                            <div class="edu-node edu-node-active">
-                                <div class="node-pulse"></div>
-                            </div>
-                        </div>
-                        <div class="edu-dates">
-                            <span>2026</span>
-                            <span class="edu-active-text">En Proceso</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- 4. SECCIÓN CURSOS Y CERTIFICACIONES -->
-    <section id="certificaciones-overdrive" class="cert-overdrive-section">
-        <div class="cert-bg-grid"></div>
-        <div class="cert-laser-scan"></div>
-
-        <div class="container" style="position: relative; z-index: 2; text-align: center; margin-bottom: 3rem;">
-            <h2 class="section-title reveal"><span class="scramble-text" data-text="Cursos y ">Cursos y </span><span
-                    style="color: var(--primary-400);" class="scramble-text"
-                    data-text="Certificaciones">Certificaciones</span></h2>
-            <p class="cert-desc reveal">Aprendizaje continuo enfocado en comprender sistemas y mejorar la forma en que
-                trabajan las organizaciones.</p>
-        </div>
-
-        <div class="marquee-wrapper reveal-3d">
-            <!-- Fila 1: Derecha a Izquierda -->
-            <div class="marquee-container">
-                <div class="marquee-track track-left">
-                    <div class="cert-badge premium-badge"><span class="cert-cat-num">5</span> Automatización</div>
-                    <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Innovación Empresarial
-                    </div>
-                    <div class="cert-badge premium-badge"><span class="cert-cat-num">7</span> Finanzas Corporativas
-                    </div>
-                    <div class="cert-badge premium-badge"><span class="cert-cat-num">12</span> Ciberseguridad</div>
-                    <div class="cert-badge premium-badge"><span class="cert-cat-num">9</span> Inteligencia Artificial
-                    </div>
-
-                    <div class="cert-badge premium-badge"><span class="cert-cat-num">5</span> Automatización</div>
-                    <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Innovación Empresarial
-                    </div>
-                    <div class="cert-badge premium-badge"><span class="cert-cat-num">7</span> Finanzas Corporativas
-                    </div>
-                    <div class="cert-badge premium-badge"><span class="cert-cat-num">12</span> Ciberseguridad</div>
-                    <div class="cert-badge premium-badge"><span class="cert-cat-num">7</span> Inteligencia Artificial
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fila 2: Izquierda a Derecha -->
-            <div class="marquee-container reverse-mask">
-                <div class="marquee-track track-right">
-                    <div class="cert-badge premium-badge">SQL / DATA</div>
-                    <div class="cert-badge premium-badge">Business Intelligence</div>
-                    <div class="cert-badge premium-badge">Python</div>
-                    <div class="cert-badge premium-badge">Automatización</div>
-                    <div class="cert-badge premium-badge">Seguridad Defensiva</div>
-
-                    <div class="cert-badge premium-badge">SQL / DATA</div>
-                    <div class="cert-badge premium-badge">Business Intelligence</div>
-                    <div class="cert-badge premium-badge">Python</div>
-                    <div class="cert-badge premium-badge">Automatización</div>
-                    <div class="cert-badge premium-badge">Seguridad Defensiva</div>
-                </div>
-
-
-                <!-- Fila 1: Derecha a Izquierda -->
-                <div class="marquee-container">
-                    <div class="marquee-track track-left">
-                        <div class="cert-badge premium-badge"><span class="cert-cat-num">11</span> Cursos Fiscales</div>
-                        <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Contabilidad
-                        </div>
-                        <div class="cert-badge premium-badge"><span class="cert-cat-num">6</span> Gestion de Proyectos
-                        </div>
-                        <div class="cert-badge premium-badge"><span class="cert-cat-num">8</span> Provecidad de datos
-                        </div>
-                        <div class="cert-badge premium-badge"><span class="cert-cat-num">2</span> Hacking etico
-                        </div>
-
-                        <div class="cert-badge premium-badge"><span class="cert-cat-num">11</span> Contabilidad</div>
-                        <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Contabilidad
-                        </div>
-                        <div class="cert-badge premium-badge"><span class="cert-cat-num">6</span> Gestion de Proyectos
-                        </div>
-                        <div class="cert-badge premium-badge"><span class="cert-cat-num">8</span> Provecidad de datos
-                        </div>
-                        <div class="cert-badge premium-badge"><span class="cert-cat-num">2</span> Hacking etico
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-
-        <div class="container" style="position: relative; z-index: 2; text-align: center; margin-top: 4rem;">
-            <a href="https://nsl-reconocimientos.blogspot.com/" target="_blank" class="btn-glow-extreme reveal">
-                VER +50 Experiencias
-            </a>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- 5. SECCIÓN BLOG -->
-    <section id="blog" class="blog-section">
+    <!-- BLOG -->
+    <section id="blog" class="blog-section v2-section">
         <div class="container">
-            <h2 class="section-title reveal">Revisa mi <br> <span style="color: var(--primary-400);">Blog</span></h2>
-            <div id="blog-grid" class="blog-grid reveal">
+            <div class="v2-heading blog-heading">
+                <p class="section-kicker reveal">Blog · Publicación diaria</p>
+                <h2 class="section-title reveal">Fiscal, negocios e IA <span class="grad-text">sin rodeos</span></h2>
+                <p class="v2-lead reveal">Análisis de noticias que sí le pegan a tu caja: CFDI, RESICO, IVA, comercio
+                    exterior y tecnología para despachos y PyMEs.</p>
+                <div class="blog-topics reveal">
+                    <a href="https://blog.erickddp.com/search/label/CFDI" target="_blank" rel="noopener">CFDI</a>
+                    <a href="https://blog.erickddp.com/search/label/RESICO" target="_blank" rel="noopener">RESICO</a>
+                    <a href="https://blog.erickddp.com/search/label/IVA" target="_blank" rel="noopener">IVA</a>
+                    <a href="https://blog.erickddp.com/search/label/Inteligencia%20Artificial" target="_blank"
+                        rel="noopener">Inteligencia Artificial</a>
+                    <a href="https://blog.erickddp.com/search/label/Comercio%20exterior" target="_blank"
+                        rel="noopener">Comercio exterior</a>
+                    <a href="https://blog.erickddp.com/search/label/Finanzas%20personales" target="_blank"
+                        rel="noopener">Finanzas personales</a>
+                </div>
+            </div>
+            <div id="blog-grid" class="blog-grid blog-grid-v2">
                 <div class="blog-loader">
                     <span class="spinner"></span> Cargando artículos...
                 </div>
             </div>
+            <div class="blog-more reveal">
+                <a href="https://blog.erickddp.com" target="_blank" rel="noopener" class="btn btn-outline btn-lg">Ver
+                    todos los artículos</a>
+            </div>
         </div>
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- 6. SECCIÓN SOBRE MÍ PREMIUM (PERFIL PROFESIONAL) -->
+    <!-- SOBRE MÍ -->
     <section id="sobre-mi" class="profile-premium" style="position: relative;">
         <!-- Nuevo fondo difuminado agresivo -->
         <div class="profile-bg-blur" id="profileBgBlur"></div>
@@ -454,7 +509,7 @@
             <div class="profile-premium-visual reveal" style="transition-delay: 0.2s;">
                 <div class="profile-avatar-container">
                     <div class="profile-avatar-glow"></div>
-                    <img src="images/perfil.png" alt="Erick Dominguez" class="profile-avatar-img"
+                    <img src="images/perfil.webp" alt="Erick Dominguez" class="profile-avatar-img"
                         onerror="this.style.display='none'">
                 </div>
 
@@ -462,41 +517,176 @@
         </div>
     </section>
 
+    <!-- FORMACIÓN -->
+    <section id="educacion" class="edu-section">
+        <div class="edu-heading container">
+            <p class="section-kicker reveal">Formación</p>
+            <h2 class="section-title reveal">Formación <span class="grad-text">Profesional</span></h2>
+        </div>
+        <div class="container edu-container reveal">
+            <div class="edu-card">
+                <div class="edu-card-glow"></div>
+                <div class="edu-card-content">
+                    <a href="https://cescijuc.edu.mx" target="_blank" rel="noopener" class="edu-logo-plate edu-plate-light">
+                        <img src="images/edu/cescijuc.png" alt="CESCIJUC" class="edu-logo-v2" loading="lazy">
+                    </a>
+                    <h3>Lic. en Contaduría Pública</h3>
+                    <div class="edu-inst">CESCIJUC <br> Céd. Prof. 13182616</div>
+
+                    <div class="edu-timeline">
+                        <div class="edu-line-container">
+                            <div class="edu-node"></div>
+                            <div class="edu-line"></div>
+                            <div class="edu-node"></div>
+                        </div>
+                        <div class="edu-dates">
+                            <span>2019</span>
+                            <span>2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edu-card">
+                <div class="edu-card-glow edu-glow-active"></div>
+                <div class="edu-card-content">
+                    <a href="https://utel.edu.mx" target="_blank" rel="noopener" class="edu-logo-plate edu-plate-dark">
+                        <img src="images/edu/utel.png" alt="UTEL Universidad" class="edu-logo-v2" loading="lazy">
+                    </a>
+                    <h3>Lic. en Inteligencia Artificial</h3>
+                    <div class="edu-inst">UTEL Universidad <br> Matrícula: 010818927</div>
+
+                    <div class="edu-timeline">
+                        <div class="edu-line-container">
+                            <div class="edu-node"></div>
+                            <div class="edu-line-dashed-container">
+                                <div class="edu-line-dashed"></div>
+                            </div>
+                            <div class="edu-node edu-node-active">
+                                <div class="node-pulse"></div>
+                            </div>
+                        </div>
+                        <div class="edu-dates">
+                            <span>2026</span>
+                            <span class="edu-active-text">En proceso</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECCIÓN CURSOS Y CERTIFICACIONES -->
+    <section id="certificaciones-overdrive" class="cert-overdrive-section">
+        <div class="cert-bg-grid"></div>
+        <div class="cert-laser-scan"></div>
+
+        <div class="container" style="position: relative; z-index: 2; text-align: center; margin-bottom: 3rem;">
+            <h2 class="section-title reveal"><span class="scramble-text" data-text="Cursos y ">Cursos y </span><span
+                    class="scramble-text grad-text-solid"
+                    data-text="Certificaciones">Certificaciones</span></h2>
+            <p class="cert-desc reveal">Aprendizaje continuo enfocado en comprender sistemas y mejorar la forma en que
+                trabajan las organizaciones.</p>
+        </div>
+
+        <div class="marquee-wrapper reveal-3d">
+            <!-- Fila 1: Derecha a Izquierda -->
+            <div class="marquee-container">
+                <div class="marquee-track track-left">
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">5</span> Automatización</div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Innovación Empresarial
+                    </div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">7</span> Finanzas Corporativas
+                    </div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">12</span> Ciberseguridad</div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">9</span> Inteligencia Artificial
+                    </div>
+
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">5</span> Automatización</div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Innovación Empresarial
+                    </div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">7</span> Finanzas Corporativas
+                    </div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">12</span> Ciberseguridad</div>
+                    <div class="cert-badge premium-badge"><span class="cert-cat-num">9</span> Inteligencia Artificial
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila 2: Izquierda a Derecha -->
+            <div class="marquee-container reverse-mask">
+                <div class="marquee-track track-right">
+                    <div class="cert-badge premium-badge">SQL / DATA</div>
+                    <div class="cert-badge premium-badge">Business Intelligence</div>
+                    <div class="cert-badge premium-badge">Python</div>
+                    <div class="cert-badge premium-badge">Automatización</div>
+                    <div class="cert-badge premium-badge">Seguridad Defensiva</div>
+
+                    <div class="cert-badge premium-badge">SQL / DATA</div>
+                    <div class="cert-badge premium-badge">Business Intelligence</div>
+                    <div class="cert-badge premium-badge">Python</div>
+                    <div class="cert-badge premium-badge">Automatización</div>
+                    <div class="cert-badge premium-badge">Seguridad Defensiva</div>
+                </div>
 
 
+                <!-- Fila 1: Derecha a Izquierda -->
+                <div class="marquee-container">
+                    <div class="marquee-track track-left">
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">11</span> Cursos Fiscales</div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Contabilidad
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">6</span> Gestión de Proyectos
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">8</span> Privacidad de datos
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">2</span> Hacking ético
+                        </div>
+
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">11</span> Cursos Fiscales</div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">4</span> Contabilidad
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">6</span> Gestión de Proyectos
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">8</span> Privacidad de datos
+                        </div>
+                        <div class="cert-badge premium-badge"><span class="cert-cat-num">2</span> Hacking ético
+                        </div>
+                    </div>
+                </div>
 
 
+            </div>
+        </div>
 
+        <div class="container" style="position: relative; z-index: 2; text-align: center; margin-top: 4rem;">
+            <a href="https://nsl-reconocimientos.blogspot.com/" target="_blank" rel="noopener" class="btn-glow-extreme reveal">
+                VER +50 Experiencias
+            </a>
+        </div>
+    </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- SECCIÓN CONTACTO: HABLAR CONMIGO (NODO) -->
+    <!-- CONTACTO -->
     <section id="contacto" class="hablar-conmigo-node">
         <div class="node-mesh-bg"></div>
         <div class="container node-container">
-            <h2 class="node-title reveal">Contactame</h2>
-            <p class="node-desc reveal">Disponible en los siguientes medios.</p>
+            <div class="cta-band reveal">
+                <p class="section-kicker">¿Empezamos?</p>
+                <h2>Tu página, tus facturas y tu contabilidad, <span class="grad-text">con una sola persona</span></h2>
+                <p>Escríbeme por WhatsApp y te respondo en persona. Sin bots ni formularios eternos.</p>
+                <div class="hero-cta">
+                    <a href="https://wa.me/525534806184?text=Hola%20Erick%2C%20quiero%20cotizar%20un%20proyecto"
+                        target="_blank" rel="noopener" class="btn btn-primary btn-lg btn-glow">Escribir por WhatsApp</a>
+                    <a href="mailto:cperickd@gmail.com" class="btn btn-outline btn-lg">Enviar correo</a>
+                </div>
+            </div>
+
+            <p class="node-desc reveal">También me encuentras en:</p>
 
             <div class="node-identity-grid">
                 <div class="orbital-ring"></div>
 
-                <a href="https://wa.me/525534806184" target="_blank" class="node-link reveal"
+                <a href="https://wa.me/525534806184" target="_blank" rel="noopener" class="node-link reveal"
                     style="transition-delay: 0.1s;">
                     <div class="node-glass">
                         <svg class="node-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -518,7 +708,7 @@
                     <span class="node-text">LinkedIn</span>
                 </a>
 
-                <a href="https://github.com/Erickddp" target="_blank" class="node-link reveal"
+                <a href="https://github.com/Erickddp" target="_blank" rel="noopener" class="node-link reveal"
                     style="transition-delay: 0.3s;">
                     <div class="node-glass">
                         <svg class="node-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -543,54 +733,57 @@
         </div>
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <img src="images/logo.png" alt="ErickDDP Logo" class="footer-logo" id="footerLogo">
-                    <p class="copyright">© 2026 ErickDDP. <br> Todos los derechos reservados. <br> Ciudad de México
+                    <p class="copyright">© 2026 EDDP Servicios · Erick Domínguez Del Prado, C.P.<br>Ciudad de México
                     </p>
                 </div>
                 <div class="footer-links">
                     <div class="col">
-                        <h4>Explorar</h4>
+                        <h4>Servicios</h4>
+                        <a href="#servicios">Páginas web</a>
+                        <a href="#servicios">Contabilidad y fiscal</a>
+                        <a href="#servicios">Automatización e IA</a>
+                        <a href="#portafolio">Portafolio</a>
+                    </div>
+                    <div class="col">
+                        <h4>Ecosistema</h4>
                         <a href="https://factura.erickddp.com" target="_blank" rel="noopener">Timbra</a>
                         <a href="https://inteligencia-mx.erickddp.com" target="_blank" rel="noopener">Inteligencia MX</a>
-                        <a href="#ecosistema">Proyectos</a>
-                        <a href="#educacion">Educación</a>
-                        <a href="#certificaciones-overdrive">Certificaciones</a>
+                        <a href="https://blog.erickddp.com" target="_blank" rel="noopener">Blog</a>
+                        <a href="https://myfiscal.erickddp.com" target="_blank" rel="noopener">myfiscal</a>
+                        <a href="https://evoapp.erickddp.com" target="_blank" rel="noopener">evoapp</a>
+                        <a href="https://proyectos.erickddp.com/" target="_blank" rel="noopener">Todos los proyectos</a>
                     </div>
                     <div class="col">
                         <h4>Legal</h4>
                         <a href="aviso-privacidad.html">Aviso de Privacidad</a>
                         <a href="legal.html#terminos">Términos de Servicio</a>
                         <a href="legal.html#etica">Ética de Datos e IA</a>
+                        <a href="manifiesto.html">Manifiesto</a>
                     </div>
                     <div class="col">
                         <h4>Contacto</h4>
-                        <a href="https://wa.me/525534806184">WhatsApp</a>
+                        <a href="https://wa.me/525534806184" target="_blank" rel="noopener">WhatsApp</a>
                         <a href="mailto:cperickd@gmail.com">Email</a>
-                        <a href="https://mx.linkedin.com/in/erickddp">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/erick-dominguez-4296411a9/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://github.com/Erickddp" target="_blank" rel="noopener">GitHub</a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+
+    <a href="https://wa.me/525534806184?text=Hola%20Erick%2C%20vengo%20de%20tu%20p%C3%A1gina" target="_blank"
+        rel="noopener" class="wa-float" aria-label="Escríbeme por WhatsApp">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.878-.788-1.47-1.761-1.643-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+        </svg>
+    </a>
 </body>
 
 </html>
